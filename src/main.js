@@ -80,6 +80,61 @@ class Footer extends React.Component {
     }
 };
 
+class Login extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            username: "",
+            password: "",
+            submit: ""
+        };
+        this.handleChangeUser = this.handleChangeUser.bind(this);
+        this.handleChangePass = this.handleChangePass.bind(this);
+        this.handleLogin = this.handleLogin.bind(this);
+        this.handleSignUp = this.handleSignUp.bind(this);
+    }
+    handleChangeUser(event) {
+        this.setState({
+            username: event.target.value
+        });
+    }
+    handleChangePass(event) {
+        this.setState({
+            password: event.target.value
+        });
+    }
+    handleLogin(event) {
+        event.preventDefault();
+        //POST to url
+    }
+    handleSignUp(event) {
+        event.preventDefault();
+        //Redirect to another page
+    }
+    render() {
+        return (
+            <div>
+                <div id="login_page" className="row">
+                    <div id="login" className="col-md-6 text-center">
+                        <h4>Login</h4>
+                        <form id="input_user" onSubmit={this.handleLogin}>
+                            <label>Username:<input value={this.state.username} type="text" placeholder="Email or Phone" onChange={this.handleChangeUser}></input></label><br />                   
+                            <label>Password:<input value={this.state.password} type="text" placeholder="Password" onChange={this.handleChangePass}></input></label><br />
+                            <a href="#">Forgot password?</a>
+                            <button className="btn btn-default btn-primary" type="submit">Login</button>
+                        </form>
+                        <div id="input_non_member">
+                            <p>No account?</p>
+                            <button className="btn btn-default btn-primary" onClick={this.handleSignUp}>Sign Up</button>
+                        </div>
+                    </div>
+                    <div id="logo" className="col-md-6">
+                    </div>
+                </div>
+            </div>
+        );
+    }
+};
 class App extends React.Component {
     constructor(props) {
         super(props);
@@ -88,6 +143,7 @@ class App extends React.Component {
         return (
             <div>
                 <Header />
+                <Login />
                 <Footer />
             </div>
         );
