@@ -30,14 +30,46 @@ const store = createStore(mainReducer);
 store.subscribe(() => console.log(store.getState()));
 
 //React Component
+class Header extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+    render() {
+        return (
+            <div>
+                <navbar className="row">
+                    <div id="logo" className="col-md-2">
+                        <h1>MedicHive</h1>
+                    </div>
+                    <div id="nav" className="col-md-10">
+                        <ul className="nav nav-tabs navbar-right">
+                            <li><a href="#">Link</a></li>
+                            <li><a href="#">Link</a></li>
+                            <li><a href="#">Link</a></li>
+                        </ul>
+                    </div>
+                </navbar>
+            </div>
+        );
+    }
+};
+class Footer extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+    render() {
+
+    }
+};
+
 class App extends React.Component {
     constructor(props) {
         super(props);
     }
     render() {
-        return(
+        return (
             <div>
-                <h1>Hello World!</h1>
+                <Header />
             </div>
         );
     }
