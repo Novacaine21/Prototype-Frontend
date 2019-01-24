@@ -37,7 +37,7 @@ class Header extends React.Component {
     render() {
         return (
             <div>
-                <navbar className="row">
+                <div id="header" className="row">
                     <div id="logo" className="col-md-2">
                         <h1>MedicHive</h1>
                     </div>
@@ -48,7 +48,7 @@ class Header extends React.Component {
                             <li><a href="#">Link</a></li>
                         </ul>
                     </div>
-                </navbar>
+                </div>
             </div>
         );
     }
@@ -58,7 +58,25 @@ class Footer extends React.Component {
         super(props);
     }
     render() {
-
+        return (
+            <div>
+                <div id="footer" className="row">
+                    <div id="social" className="col-md-4 text-center">
+                        <a href="#"><i className="fa fa-facebook icon"></i></a>
+                        <a href="#"><i className="fa fa-instagram icon"></i></a>
+                        <a href="#"><i className="fa fa-twitter icon"></i></a>   
+                        <hr />
+                        <div id="contact">
+                            <h4>Contact Us</h4>
+                            <p>Lorem Ipsum</p>
+                        </div>
+                    </div>
+                    <div id="lorem" className="col-md-8 text-center">
+                        Lorem Ipsum
+                    </div>
+                </div>
+            </div>
+        );
     }
 };
 
@@ -70,6 +88,7 @@ class App extends React.Component {
         return (
             <div>
                 <Header />
+                <Footer />
             </div>
         );
     }
