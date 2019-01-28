@@ -1,33 +1,14 @@
-"use strict";
+// "use strict";
 import React from "react";
 import ReactDOM from "react-dom";
 import PropTypes from "prop-types";
-import { createStore } from "redux";
-import { Provider } from "react-redux";
-import { connect } from "react-redux";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import axios from "axios";
+
 import "./style.scss";
 
-//Redux Store
-const NOTHING = "NOTHING";
-const defaultState = {
-
-};
-const mainReducer = (state = defaultState, action) => {
-    switch(action.type) {
-        case NOTHING: 
-            return state;
-        default:
-            return state;
-    }
-};
-const nothingAction = () => {
-    return {
-        type: "NOTHING"
-    };
-};
-const store = createStore(mainReducer);
-store.subscribe(() => console.log(store.getState()));
+//Axios
+axios.defaults.baseURL = "http://localhost:3000";
 
 //React Component
 class Header extends React.Component {
@@ -37,22 +18,13 @@ class Header extends React.Component {
     render() {
         return (
             <div>
-                <div id="header" className="row">
-                    <div id="logo" className="col-md-2">
-                        <h1>MedicHive</h1>
-                    </div>
-                    <div id="nav" className="col-md-10">
-                        <ul className="nav nav-tabs navbar-right">
-                            <li><a href="#">Link</a></li>
-                            <li><a href="#">Link</a></li>
-                            <li><a href="#">Link</a></li>
-                        </ul>
-                    </div>
+                <div id="header">
                 </div>
             </div>
         );
     }
 };
+
 class Footer extends React.Component {
     constructor(props) {
         super(props);
@@ -60,20 +32,84 @@ class Footer extends React.Component {
     render() {
         return (
             <div>
-                <div id="footer" className="row">
-                    <div id="social" className="col-md-4 text-center">
-                        <a href="#"><i className="fa fa-facebook icon"></i></a>
-                        <a href="#"><i className="fa fa-instagram icon"></i></a>
-                        <a href="#"><i className="fa fa-twitter icon"></i></a>   
-                        <hr />
-                        <div id="contact">
-                            <h4>Contact Us</h4>
-                            <p>Lorem Ipsum</p>
-                        </div>
-                    </div>
-                    <div id="lorem" className="col-md-8 text-center">
-                        Lorem Ipsum
-                    </div>
+                <div id="footer">
+                </div>
+            </div>
+        );
+    }
+};
+
+class Home extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+    render() {
+        return (
+            <div>
+                <div id="home">
+                    <h1><a href="#">LOGIN</a></h1>
+                    <h1><a href="#">SIGN UP</a></h1>
+                </div>
+            </div>
+        );
+    }
+};
+
+class NotFound extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+    render() {
+        return (
+            <div>
+                <div id="not_found">
+                    <h1>404 ERROR!</h1>
+                </div>
+            </div>
+        );
+    }
+};
+
+class SignUp extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            email: "",
+            password: "",
+            submit: ""
+        };
+        this.handleChangeUser = this.handleChangeUser.bind(this);
+        this.handleChangePass = this.handleChangePass.bind(this);
+        this.handleSignUp = this.handleSignUp.bind(this);
+    }
+    handleChangeUser(event) {
+        this.setState({
+            email: event.target.value
+        });
+    }
+    handleChangePass(event) {
+        this.setState({
+            password: event.target.value
+        });
+    }
+    handleSignUp() {
+        event.preventDefault();
+        //Axios SIGNUP
+    }
+    render() {
+        return (
+            <div>
+                <div id="sign_up">
+                    <h3>SIGN UP</h3>
+                    <form id="sign_up_form" onSubmit={this.handleSignUp}>
+                        <label>Username:</label>
+                        <input id="sign_up_email" value={this.state.email} type="text" placeholder="email" onChange={this.handleChangeUser}></input>
+                        <br />
+                        <label>Password:</label>
+                        <input id="sign_up_password" value={this.state.password} type="text" placeholder="password" onChange={this.handleChangePass}></input>
+                        <br />
+                        <button id="sign_up_button" className="btn btn-default btn-success" type="submit">Sign Up</button>
+                    </form>
                 </div>
             </div>
         );
@@ -84,7 +120,7 @@ class Login extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            username: "",
+            email: "",
             password: "",
             submit: ""
         };
@@ -95,7 +131,7 @@ class Login extends React.Component {
     }
     handleChangeUser(event) {
         this.setState({
-            username: event.target.value
+            email: event.target.value
         });
     }
     handleChangePass(event) {
@@ -105,36 +141,67 @@ class Login extends React.Component {
     }
     handleLogin(event) {
         event.preventDefault();
-        //POST to url
+        var body = {
+            email: this.state.email,
+            password: this.state.password
+        };
+        axios({
+            method: "post",
+            url: "/users/login",
+            data: body
+        }).then((res) => {
+            localStorage.setItem("token", res.headers["x-auth"]);
+            this.props.setID(res.data._id);
+        }).catch((err) => {
+            console.log(err);
+            alert("Invalid email or password!");
+        });
     }
     handleSignUp(event) {
         event.preventDefault();
         //Redirect to another page
+        console.log(localStorage.getItem("token"));
     }
     render() {
         return (
             <div>
-                <div id="login_page" className="row">
-                    <div id="login" className="col-md-6 text-center">
-                        <h4>Login</h4>
-                        <form id="input_user" onSubmit={this.handleLogin}>
-                            <label>Username:<input value={this.state.username} type="text" placeholder="Email or Phone" onChange={this.handleChangeUser}></input></label><br />                   
-                            <label>Password:<input value={this.state.password} type="text" placeholder="Password" onChange={this.handleChangePass}></input></label><br />
-                            <a href="#">Forgot password?</a>
-                            <button className="btn btn-default btn-primary" type="submit">Login</button>
-                        </form>
-                        <div id="input_non_member">
-                            <p>No account?</p>
-                            <button className="btn btn-default btn-primary" onClick={this.handleSignUp}>Sign Up</button>
-                        </div>
-                    </div>
-                    <div id="logo" className="col-md-6">
-                    </div>
+                <div id="login">
+                    <h3>LOGIN</h3>
+                    <form id="login_form" onSubmit={this.handleLogin}>
+                        <label>Username:</label>
+                        <input id="login_email" value={this.state.email} type="text" placeholder="email" onChange={this.handleChangeUser}></input>
+                        <br />
+                        <label>Password:</label>
+                        <input id="login_password" value={this.state.password} type="text" placeholder="password" onChange={this.handleChangePass}></input>
+                        <br />
+                        <button id="login_button" className="btn btn-default btn-success" type="submit">Login</button>
+                        <a href="#">Forgot password?</a>
+                    </form>
+                    <br />
+                    <br />
+                    <hr />
+                    <h3>SIGNUP</h3>
+                    <button id="login.sign_up_button" className="btn btn-default btn-success" onClick={this.handleSignUp}>Sign Up</button>
                 </div>
             </div>
         );
     }
 };
+
+class DashBoard extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+    render() {
+        return (
+            <div>
+                <div id="dashboard">
+                </div>
+            </div>
+        );
+    }
+};
+
 class App extends React.Component {
     constructor(props) {
         super(props);
@@ -143,43 +210,104 @@ class App extends React.Component {
         return (
             <div>
                 <Header />
-                <Login />
+                <Login  />
+                <SignUp />
                 <Footer />
             </div>
         );
     }
 };
 
-//Match state, dispatch to props
-const mapStateToProps = (state) => {
-    return {
-        state: state
-    };
-};
-const mapDispatchToProps = (dispatch) => {
-    return {
-        doNothing: () => {
-            dispatch(nothingAction());
-        }
-    };
-};
-
-const Container = connect(mapStateToProps, mapDispatchToProps)(App);
-
-class Presentation extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-    render() {
-        return(
-            <Provider store={store}>
-                <Container />
-            </Provider>
-        );
-    }
-};
+export default App;
 
 ReactDOM.render(
-    <Presentation />,
-     document.getElementById("root"));
+    <App />,
+    document.getElementById("root"));
 
+
+// import React from "react";
+// import ReactDOM from "react-dom";
+// import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+
+// function BasicExample() {
+//     return (
+//         <Router>
+//             <div>
+//                 <ul>
+//                     <li>
+//                         <Link to="/">Home</Link>
+//                     </li>
+//                     <li>
+//                         <Link to="/about">About</Link>
+//                     </li>
+//                     <li>
+//                         <Link to="/topics">Topics</Link>
+//                     </li>
+//                 </ul>
+
+//                 <hr />
+
+//                 <Route exact path="/" component={Home} />
+//                 <Route path="/about" component={About} />
+//                 <Route path="/topics" component={Topics} />
+//             </div>
+//         </Router>
+//     );
+// }
+
+// class Home extends React.Component {
+//     render() {
+//         return (
+//         <div>
+//             <h2>Home</h2>
+//         </div>
+//         );
+//     }
+// }
+
+// function About() {
+//     return (
+//         <div>
+//             <h2>About</h2>
+//         </div>
+//     );
+// }
+
+// function Topics({ match }) {
+//     console.log(match.url);
+//     return (
+//         <div>
+//             <h2>Topics</h2>
+//             <ul>
+//                 <li>
+//                     <Link to={`${match.url}/rendering`}>Rendering with React</Link>
+//                 </li>
+//                 <li>
+//                     <Link to={`${match.url}/components`}>Components</Link>
+//                 </li>
+//                 <li>
+//                     <Link to={`${match.url}/props-v-state`}>Props v. State</Link>
+//                 </li>
+//             </ul>
+
+//             <Route path={`${match.path}/:topicId`} component={Topic} />
+//             <Route
+//                 exact
+//                 path={match.path}
+//                 render={() => <h3>Please select a topic.</h3>}
+//             />
+//         </div>
+//     );
+// }
+
+// function Topic({ match }) {
+//     return (
+//         <div>
+//             <h3>{match.params.topicId}</h3>
+//         </div>
+//     );
+// }
+
+// ReactDOM.render(
+//     <BasicExample />,
+//     document.getElementById("root"));
