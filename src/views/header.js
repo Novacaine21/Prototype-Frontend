@@ -18,9 +18,12 @@ class Header extends React.Component {
         }).then((res) => {
             console.log(res.data);
             localStorage.removeItem("token");
+            localStorage.removeItem("records");
             this.props.history.push("/");
         }).catch((err) => {
             console.log(err);
+            localStorage.removeItem("token");
+            localStorage.removeItem("records");
             this.props.history.push("/not_found");
         });
     }

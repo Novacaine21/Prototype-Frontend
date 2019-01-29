@@ -18,6 +18,9 @@ class App extends React.Component {
     constructor(props) {
         super(props);
     }
+    componentWillUnmount() {
+        localStorage.removeItem("token");
+    }
     render() {
         return (
             <div>
