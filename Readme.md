@@ -1,5 +1,3 @@
-# git
-
 ```
 cd .\FrontEnd\
 git pull origin master
