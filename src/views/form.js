@@ -100,7 +100,7 @@ class Form extends React.Component {
                     </form>
                     <h1>FORM DOCUMENT</h1>
                     <form id="document_form" onSubmit={this.handleUpload}>
-                        <input id="file" type="file" placeholder="select file" onChange={this.handleChangeDocument}></input>
+                        <input id="file" type="file" onChange={this.handleChangeDocument}></input>
                         <br />
                         <button id="form_button" className="btn btn-default btn-success" type="submit">Submit</button>
                     </form>
