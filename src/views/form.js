@@ -2,8 +2,10 @@ import React from "react";
 import { withRouter } from "react-router-dom";
 import axios from "axios";
 
+import baseURL from "./connect";
+
 //Axios
-axios.defaults.baseURL = "http://localhost:3000";
+axios.defaults.baseURL = baseURL;
 
 class Form extends React.Component {
     constructor(props) {
@@ -47,7 +49,7 @@ class Form extends React.Component {
             headers: { "x-auth": localStorage.getItem("token") }
         }).then((res) => {
             alert(`Record Submitted at ${res.data.enteredAt}.`);
-            this.props.history.push("/dashboard");
+            this.props.history.push("/success");
         }).catch((err) => {
             console.log(err);
             alert("Invalid Request!");
