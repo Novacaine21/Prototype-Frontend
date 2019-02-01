@@ -13,12 +13,15 @@ class Form extends React.Component {
         this.state = {
             disease: "",
             medication: "",
-            doctor: ""
+            doctor: "",
+            doc: null
         };
         this.handleChangeDisease = this.handleChangeDisease.bind(this);
         this.handleChangeMedication = this.handleChangeMedication.bind(this);
         this.handleChangeDoctor = this.handleChangeDoctor.bind(this);
+        this.handleChangeDocument = this.handleChangeDocument.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleUpload = this.handleUpload.bind(this);
     }
     handleChangeDisease(event) {
         this.setState({
@@ -33,6 +36,11 @@ class Form extends React.Component {
     handleChangeDoctor(event) {
         this.setState({
             doctor: event.target.value
+        });
+    }
+    handleChangeDocument(event) {
+        this.setState({
+            doc: event.target.files[0]
         });
     }
     handleSubmit(event) {
@@ -55,11 +63,29 @@ class Form extends React.Component {
             alert("Invalid Request!");
         });
     }
+    handleUpload(event) {
+        event.preventDefault();
+        var document = new FormData()
+        document.append("file", this.state.doc, this.state.doc.name)
+        axios({
+            method: "post",
+            url: "/upload",
+            data: document,
+            headers: { "x-auth": localStorage.getItem("token") }
+        }).then((res) => {
+            alert(`Document "${res.data.name}" Submitted at ${new Date().toString()}.`);
+            this.props.history.push("/success");
+        }).catch((err) => {
+            console.log(err);
+            alert("Invalid Request!");
+        });
+        console.log(this.state.doc);
+    }
     render() {
         return (
             <div>
                 <div id="form">
-                    <h1>FORM</h1>
+                    <h1>FORM DATA</h1>
                     <form id="record_form" onSubmit={this.handleSubmit}>
                         <label>Disease:</label>
                         <input id="disease" value={this.state.disease} type="text" placeholder="disease" onChange={this.handleChangeDisease}></input>
@@ -69,6 +95,12 @@ class Form extends React.Component {
                         <br />
                         <label>Doctor:</label>
                         <input id="doctor" value={this.state.doctor} type="text" placeholder="doctor" onChange={this.handleChangeDoctor}></input>
+                        <br />
+                        <button id="form_button" className="btn btn-default btn-success" type="submit">Submit</button>
+                    </form>
+                    <h1>FORM DOCUMENT</h1>
+                    <form id="document_form" onSubmit={this.handleUpload}>
+                        <input id="file" type="file" placeholder="select file" onChange={this.handleChangeDocument}></input>
                         <br />
                         <button id="form_button" className="btn btn-default btn-success" type="submit">Submit</button>
                     </form>
