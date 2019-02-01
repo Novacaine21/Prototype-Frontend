@@ -1,4 +1,10 @@
 import React from "react";
+import axios from "axios";
+
+import baseURL from "./connect";
+
+//Axios
+axios.defaults.baseURL = baseURL;
 
 class Home extends React.Component {
     constructor(props) {
@@ -12,11 +18,25 @@ class Home extends React.Component {
     handleSignUp() {
         this.props.history.push("/sign_up");
     }
+    componentDidMount() {
+        if(localStorage.getItem("token")) {
+            axios({
+                method: "get",
+                url: "/users/me",
+                headers: { "x-auth": localStorage.getItem("token") }
+            }).then((res) => {
+                localStorage.setItem("_id", res.data._id);
+                this.props.history.push("/dashboard");
+            }).catch((err) => {
+                console.log(err);
+            });
+        }
+    }
     render() {
         return (
             <div>
                 <div id="home">
-                    <button id="login_home" className="btn btn-default btn-success" onClick={this.handleLogin} >Login</button>
+                    <button id="login_home" className="btn btn-default btn-success" onClick={this.handleLogin}>Login</button>
                     <button id="sign_up_home" className="btn btn-default btn-success" onClick={this.handleSignUp}>Sign Up</button>
                 </div>
             </div>

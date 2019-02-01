@@ -4,9 +4,10 @@ import { Tabs, Tab } from "react-bootstrap";
 import axios from "axios";
 
 import Form from "./form";
+import baseURL from "./connect";
 
 //Axios
-axios.defaults.baseURL = "http://localhost:3000";
+axios.defaults.baseURL = baseURL;
 
 class DashBoard extends React.Component {
     constructor(props) {

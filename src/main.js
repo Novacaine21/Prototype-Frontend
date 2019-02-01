@@ -1,7 +1,7 @@
 "use strict";
 import React from "react";
 import ReactDOM from "react-dom";
-import { BrowserRouter as Router, Route, Link, withRouter } from "react-router-dom";
+import { BrowserRouter as Router, Route, withRouter } from "react-router-dom";
 
 import Home from "./views/home";
 import Header from "./views/header";
@@ -10,6 +10,7 @@ import NotFound from "./views/not_found";
 import Login from "./views/login";
 import SignUp from "./views/sign_up";
 import DashBoard from "./views/dashboard";
+import Success from "./views/success";
 
 import "./style.scss";
 
@@ -17,9 +18,6 @@ import "./style.scss";
 class App extends React.Component {
     constructor(props) {
         super(props);
-    }
-    componentWillUnmount() {
-        localStorage.removeItem("token");
     }
     render() {
         return (
@@ -35,6 +33,7 @@ class App extends React.Component {
                         <Route exact path="/sign_up" component={withRouter(SignUp)} />
                         <Route exact path="/dashboard" component={withRouter(DashBoard)} />
                         <Route exact path="/not_found" component={withRouter(NotFound)} />
+                        <Route exact path="/success" component={withRouter(Success)} />
                         <Footer />
                     </div>
                 </Router>

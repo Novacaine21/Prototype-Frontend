@@ -2,8 +2,10 @@ import React from "react";
 import { Link, withRouter } from "react-router-dom";
 import axios from "axios";
 
+import baseURL from "./connect";
+
 //Axios
-axios.defaults.baseURL = "http://localhost:3000";
+axios.defaults.baseURL = baseURL;
 
 class Header extends React.Component {
     constructor(props) {
@@ -19,11 +21,13 @@ class Header extends React.Component {
             console.log(res.data);
             localStorage.removeItem("token");
             localStorage.removeItem("records");
+            localStorage.removeItem("_id");
             this.props.history.push("/");
         }).catch((err) => {
             console.log(err);
             localStorage.removeItem("token");
             localStorage.removeItem("records");
+            localStorage.removeItem("_id");
             this.props.history.push("/not_found");
         });
     }
@@ -32,7 +36,7 @@ class Header extends React.Component {
             return (
                 <div>
                     <div id="header">
-                        <Link to="/">Home</Link>
+                        <Link to="/dashboard">Dashboard</Link>
                         <br />
                         <button id="logout_button" className="btn btn-default btn-danger" onClick={this.handleLogout}>Logout</button>
                     </div>

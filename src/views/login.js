@@ -1,8 +1,10 @@
 import React from "react";
 import axios from "axios";
 
+import baseURL from "./connect";
+
 //Axios
-axios.defaults.baseURL = "http://localhost:3000";
+axios.defaults.baseURL = baseURL;
 
 class Login extends React.Component {
     constructor(props) {
@@ -38,6 +40,7 @@ class Login extends React.Component {
             data: body
         }).then((res) => {
             localStorage.setItem("token", res.headers["x-auth"]);
+            localStorage.setItem("_id", res.data._id);
             this.props.history.push("/dashboard");
         }).catch((err) => {
             console.log(err);
