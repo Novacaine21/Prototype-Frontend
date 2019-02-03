@@ -3,14 +3,14 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter as Router, Route, withRouter } from "react-router-dom";
 
-import Home from "./views/home";
-import Header from "./views/header";
-import Footer from "./views/footer";
-import NotFound from "./views/not_found";
-import Login from "./views/login";
-import SignUp from "./views/sign_up";
-import DashBoard from "./views/dashboard";
-import Success from "./views/success";
+import Header from "./views/presentation/header";
+import Footer from "./views/presentation/footer";
+import Home from "./views/presentation/home";
+import NotFound from "./views/presentation/not_found";
+import Success from "./views/presentation/success";
+import Login from "./views/presentation/login";
+import SignUp from "./views/presentation/sign_up";
+import DashBoard from "./views/user/dashboard";
 
 import "./style.scss";
 

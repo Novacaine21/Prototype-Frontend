@@ -3,7 +3,7 @@ import { withRouter } from "react-router-dom";
 import axios from "axios";
 import fileDownload from "js-file-download";
 
-import baseURL from "./connect";
+import baseURL from "../connect/connect";
 
 //Axios
 axios.defaults.baseURL = baseURL;
@@ -44,8 +44,7 @@ class Documents extends React.Component {
                 fileDownload(res.data, res.headers["x-name"]);
             }
         }).catch((err) => {
-            console.log(err);
-            alert("Invalid Request!");
+            this.props.history.push("/not_found");
         });
 
     }
@@ -71,8 +70,7 @@ class Documents extends React.Component {
             localStorage.setItem("docs", JSON.stringify(res.data.docs));
             this.populate(res.data.docs);
         }).catch((err) => {
-            console.log(err);
-            alert("Invalid Request!");
+            this.props.history.push("/not_found");
         });
     }
     render() {

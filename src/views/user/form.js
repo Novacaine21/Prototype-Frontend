@@ -1,9 +1,8 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
 import axios from "axios";
-import fileDownload from "js-file-download";
 
-import baseURL from "./connect";
+import baseURL from "../connect/connect";
 
 //Axios
 axios.defaults.baseURL = baseURL;
@@ -60,8 +59,7 @@ class Form extends React.Component {
             alert(`Record Submitted at ${res.data.enteredAt}.`);
             this.props.history.push("/success");
         }).catch((err) => {
-            console.log(err);
-            alert("Invalid Request!");
+            this.props.history.push("/not_found");
         });
     }
     handleUpload(event) {
@@ -78,8 +76,7 @@ class Form extends React.Component {
                 alert(`Document "${res.data.name}" Submitted at ${new Date().toString()}.`);
                 this.props.history.push("/success");
             }).catch((err) => {
-                console.log(err);
-                alert("Invalid Request!");
+                this.props.history.push("/not_found");
             });
         } else {
             alert("Select a document to upload!");

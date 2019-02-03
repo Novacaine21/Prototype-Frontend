@@ -2,7 +2,7 @@ import React from "react";
 import { withRouter } from "react-router-dom";
 import axios from "axios";
 
-import baseURL from "./connect";
+import baseURL from "../connect/connect";
 
 //Axios
 axios.defaults.baseURL = baseURL;
@@ -53,8 +53,7 @@ class Records extends React.Component {
             localStorage.setItem("records", JSON.stringify(res.data.records));
             this.populate(res.data.records);
         }).catch((err) => {
-            alert("Error! Login!");
-            this.props.history.push("/login");
+            this.props.history.push("/not_found");
         });
     }
     render() {

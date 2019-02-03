@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 
-import baseURL from "./connect";
+import baseURL from "../connect/connect";
 
 //Axios
 axios.defaults.baseURL = baseURL;
@@ -28,7 +28,7 @@ class Home extends React.Component {
                 localStorage.setItem("_id", res.data._id);
                 this.props.history.push("/dashboard");
             }).catch((err) => {
-                console.log(err);
+                this.props.history.push("/login");
             });
         }
     }

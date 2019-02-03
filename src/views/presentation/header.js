@@ -2,7 +2,7 @@ import React from "react";
 import { Link, withRouter } from "react-router-dom";
 import axios from "axios";
 
-import baseURL from "./connect";
+import baseURL from "../connect/connect";
 
 //Axios
 axios.defaults.baseURL = baseURL;
@@ -42,6 +42,7 @@ class Header extends React.Component {
             localStorage.setItem("_id", res.data._id)
         }).catch((err) => {
             localStorage.removeItem("token");
+            this.props.history.push("/");
         });
     }
     render() {

@@ -6,7 +6,7 @@ import axios from "axios";
 import Form from "./form";
 import Records from "./records";
 import Documents from "./documents";
-import baseURL from "./connect";
+import baseURL from "../connect/connect";
 
 //Axios
 axios.defaults.baseURL = baseURL;
@@ -26,8 +26,7 @@ class DashBoard extends React.Component {
         }).then((res) => {
             localStorage.setItem("_id", res.data._id)
         }).catch((err) => {
-            alert("Not logged in!");
-            this.props.history.push("/login");
+            this.props.history.push("/not_found");
         });
     }
     render() {

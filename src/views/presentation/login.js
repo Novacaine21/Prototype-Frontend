@@ -1,12 +1,12 @@
 import React from "react";
 import axios from "axios";
 
-import baseURL from "./connect";
+import baseURL from "../connect/connect";
 
 //Axios
 axios.defaults.baseURL = baseURL;
 
-class SignUp extends React.Component {
+class Login extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -15,6 +15,7 @@ class SignUp extends React.Component {
         };
         this.handleChangeUser = this.handleChangeUser.bind(this);
         this.handleChangePass = this.handleChangePass.bind(this);
+        this.handleLogin = this.handleLogin.bind(this);
         this.handleSignUp = this.handleSignUp.bind(this);
     }
     handleChangeUser(event) {
@@ -27,7 +28,7 @@ class SignUp extends React.Component {
             password: event.target.value
         });
     }
-    handleSignUp(event) {
+    handleLogin(event) {
         event.preventDefault();
         var body = {
             email: this.state.email,
@@ -35,35 +36,43 @@ class SignUp extends React.Component {
         };
         axios({
             method: "post",
-            url: "/users",
+            url: "/users/login",
             data: body
         }).then((res) => {
             localStorage.setItem("token", res.headers["x-auth"]);
             localStorage.setItem("_id", res.data._id);
             this.props.history.push("/dashboard");
         }).catch((err) => {
-            console.log(err);
-            alert("Invalid email or password!");
+            this.props.history.push("/not_found");
         });
+    }
+    handleSignUp() {
+        this.props.history.push("/sign_up");
     }
     render() {
         return (
             <div>
-                <div id="sign_up">
-                    <h3>SIGN UP</h3>
-                    <form id="sign_up_form" onSubmit={this.handleSignUp}>
+                <div id="login">
+                    <h3>LOGIN</h3>
+                    <form id="login_form" onSubmit={this.handleLogin}>
                         <label>Username:</label>
-                        <input id="sign_up_email" value={this.state.email} type="text" placeholder="email" onChange={this.handleChangeUser}></input>
+                        <input id="login_email" value={this.state.email} type="text" placeholder="email" onChange={this.handleChangeUser}></input>
                         <br />
                         <label>Password:</label>
-                        <input id="sign_up_password" value={this.state.password} type="text" placeholder="password" onChange={this.handleChangePass}></input>
+                        <input id="login_password" value={this.state.password} type="text" placeholder="password" onChange={this.handleChangePass}></input>
                         <br />
-                        <button id="sign_up_button" className="btn btn-default btn-success" type="submit">Sign Up</button>
+                        <button id="login_button" className="btn btn-default btn-success" type="submit">Login</button>
+                        <a href="#">Forgot password?</a>
                     </form>
+                    <br />
+                    <br />
+                    <hr />
+                    <h3>SIGNUP</h3>
+                    <button id="login.sign_up_button" className="btn btn-default btn-success" onClick={this.handleSignUp}>Sign Up</button>
                 </div>
             </div>
         );
     }
 };
 
-export default SignUp;
+export default Login;
