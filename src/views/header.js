@@ -21,14 +21,27 @@ class Header extends React.Component {
             console.log(res.data);
             localStorage.removeItem("token");
             localStorage.removeItem("records");
+            localStorage.removeItem("docs");
             localStorage.removeItem("_id");
             this.props.history.push("/");
         }).catch((err) => {
             console.log(err);
             localStorage.removeItem("token");
             localStorage.removeItem("records");
+            localStorage.removeItem("docs");
             localStorage.removeItem("_id");
             this.props.history.push("/not_found");
+        });
+    }
+    componentDidMount() {
+        axios({
+            method: "get",
+            url: "/users/me",
+            headers: { "x-auth": localStorage.getItem("token") }
+        }).then((res) => {
+            localStorage.setItem("_id", res.data._id)
+        }).catch((err) => {
+            localStorage.removeItem("token");
         });
     }
     render() {

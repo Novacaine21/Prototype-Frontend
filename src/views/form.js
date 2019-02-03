@@ -1,6 +1,7 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
 import axios from "axios";
+import fileDownload from "js-file-download";
 
 import baseURL from "./connect";
 
@@ -65,21 +66,24 @@ class Form extends React.Component {
     }
     handleUpload(event) {
         event.preventDefault();
-        var document = new FormData()
-        document.append("file", this.state.doc, this.state.doc.name)
-        axios({
-            method: "post",
-            url: "/upload",
-            data: document,
-            headers: { "x-auth": localStorage.getItem("token") }
-        }).then((res) => {
-            alert(`Document "${res.data.name}" Submitted at ${new Date().toString()}.`);
-            this.props.history.push("/success");
-        }).catch((err) => {
-            console.log(err);
-            alert("Invalid Request!");
-        });
-        console.log(this.state.doc);
+        if(this.state.doc) {
+            var document = new FormData()
+            document.append("file", this.state.doc, this.state.doc.name)
+            axios({
+                method: "post",
+                url: "/upload",
+                data: document,
+                headers: { "x-auth": localStorage.getItem("token") }
+            }).then((res) => {
+                alert(`Document "${res.data.name}" Submitted at ${new Date().toString()}.`);
+                this.props.history.push("/success");
+            }).catch((err) => {
+                console.log(err);
+                alert("Invalid Request!");
+            });
+        } else {
+            alert("Select a document to upload!");
+        } 
     }
     render() {
         return (
