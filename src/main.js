@@ -11,7 +11,6 @@ import Login from "./views/login";
 import SignUp from "./views/sign_up";
 import DashBoard from "./views/dashboard";
 import Success from "./views/success";
-import Form from "./views/form";
 
 import "./style.scss";
 
