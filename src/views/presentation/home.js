@@ -19,6 +19,7 @@ class Home extends React.Component {
         this.props.history.push("/sign_up");
     }
     componentDidMount() {
+        $("#bg-div").addClass("bg-div-1 animated fadeInRight");
         if(localStorage.getItem("token")) {
             axios({
                 method: "get",
@@ -32,12 +33,20 @@ class Home extends React.Component {
             });
         }
     }
+    componentWillUnmount() {
+        $("#bg-div").removeClass("bg-div-1 animated fadeInRight");
+    }
     render() {
         return (
             <div>
-                <div id="home">
-                    <button id="login_home" className="btn btn-default btn-success" onClick={this.handleLogin}>Login</button>
-                    <button id="sign_up_home" className="btn btn-default btn-success" onClick={this.handleSignUp}>Sign Up</button>
+                <div id="home" className="text-left page-body">
+                    <h1 className="heading">We Take Care Of Your Medical Records.</h1>
+                    <p >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nisi sem, hendrerit a auctor ac, pellentesque nec enim. Aliquam eu risus ut tortor consequat ornare.</p>
+                    <div className="row home-buttons">
+                        <button id="login_home" className="home-btn btn btn-default btn-1 pull-left" onClick={this.handleLogin}>Login</button>
+                        <button id="sign_up_home" className="home-btn btn btn-default btn-1 " onClick={this.handleSignUp}>Sign Up</button>
+                    </div>
+                    <img className="home-img" src="/public/images/homepage-illustration.png"></img>
                 </div>
             </div>
         );

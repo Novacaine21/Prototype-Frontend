@@ -45,20 +45,32 @@ class SignUp extends React.Component {
             this.props.history.push("/not_found");
         });
     }
+    componentDidMount() {
+        $("#bg-div").addClass("bg-div-2 animated fadeInRightBig");
+        $("#sign_up").addClass("animated fadeInLeft");
+    }
+    componentWillUnmount() {
+        $("#bg-div").removeClass("bg-div-2 animated fadeInRightBig");
+        $("#sign_up").removeClass("animated fadeInLeft");
+    }
     render() {
         return (
             <div>
-                <div id="sign_up">
-                    <h3>SIGN UP</h3>
-                    <form id="sign_up_form" onSubmit={this.handleSignUp}>
-                        <label>Username:</label>
-                        <input id="sign_up_email" value={this.state.email} type="text" placeholder="email" onChange={this.handleChangeUser}></input>
-                        <br />
-                        <label>Password:</label>
-                        <input id="sign_up_password" value={this.state.password} type="text" placeholder="password" onChange={this.handleChangePass}></input>
-                        <br />
-                        <button id="sign_up_button" className="btn btn-default btn-success" type="submit">Sign Up</button>
-                    </form>
+                <div id="sign_up" className="text-left page-body row">
+                    <div className="col-md-6">
+                        <h3 className="heading">Sign Up.</h3>
+                        <form id="sign_up_form" onSubmit={this.handleSignUp}>
+                            <div className="input-group float-label-control">
+                                <span className="input-group-addon"><i className="icon fas fa-envelope"></i></span>
+                                <label className="form-line"><input id="sign_up_email" className="form-control" value={this.state.email} type="text" placeholder="Email" onChange={this.handleChangeUser}></input></label>
+                            </div>
+                            <div className="input-group float-label-control">
+                                <span className="input-group-addon"><i className="icon fas fa-key"></i></span>
+                                <label className="form-line"><input id="sign_up_password" className="form-control" value={this.state.password} type="password" placeholder="Password" onChange={this.handleChangePass}></input></label>
+                            </div>
+                            <button id="sign_up_button" className="btn btn-default btn-1" type="submit">Sign Up</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         );

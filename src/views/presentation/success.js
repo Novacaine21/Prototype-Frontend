@@ -7,8 +7,10 @@ class Success extends React.Component {
   render() {
     return (
       <div>
-        <div id="success">
-            <h1>SUCCESS</h1>
+        <div id="bg-div" className="bg-div-1"></div>
+        <div id="success" className="page-body row">
+          <h1 className="heading">Success!</h1>
+          <p>Your file has been uploaded successfully.</p>
         </div>
       </div>
     );

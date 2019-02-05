@@ -24,10 +24,8 @@ class App extends React.Component {
             <div>
                 <Router>
                     <div>
+                        <div id="bg-div" className="bg-div-1"></div>
                         <Header />
-                        <br />
-                        <br />
-                        <hr />
                         <Route exact path="/" component={withRouter(Home)} />
                         <Route exact path="/login" component={withRouter(Login)} />
                         <Route exact path="/sign_up" component={withRouter(SignUp)} />

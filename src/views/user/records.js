@@ -59,13 +59,15 @@ class Records extends React.Component {
     render() {
         return (
             <div>
+                <div id="bg-div" className="bg-div-1"></div>
                 <div id="records">
-                    <h1>SEARCH BY DISEASE</h1>
-                    <input value={this.state.search} type="text" placeholder="search by disease" onChange={this.handleChange}></input>
-                    <br />
-                    <br />
-                    <button className="btn btn-default btn-success" onClick={this.handleSearch}>Search</button>
-                    <hr />
+                    <div className="searchbar input-group float-label-control">
+                        <span className="input-group-addon"><i className="icon fas fa-search"></i></span>
+                        <label className="form-line"><input id="search" className="form-control sb-field" value={this.state.search} type="text" placeholder="Disease" onChange={this.handleChange}></input></label>
+                        <div>
+                            <button id="search_button" className="btn btn-1 btn-default btn-success" onClick={this.handleSearch}>Search</button>
+                        </div>
+                    </div>
                     <table className="text-center table table-hover">
                         <thead>
                             <tr>

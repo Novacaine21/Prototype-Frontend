@@ -7,8 +7,9 @@ class NotFound extends React.Component {
     render() {
         return (
             <div>
-                <div id="not_found">
-                    <h1>404 ERROR!</h1>
+                <div id="not_found" className="page-body row">
+                    <h1 className="heading">Page not found!</h1>
+                    <p>Sorry. We couldn't find the page.</p>
                 </div>
             </div>
         );

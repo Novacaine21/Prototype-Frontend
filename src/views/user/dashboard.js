@@ -32,8 +32,9 @@ class DashBoard extends React.Component {
     render() {
         return (
             <div>
-                <div id="dashboard">
-                    <Tabs id="dashboard_tab" activeKey={this.state.key} onSelect={(key) => this.setState({ key })}>
+                <div id="dashboard" className="page-body">
+                    <h1 className="heading">Dashboard.</h1>
+                    <Tabs id="dashboard_tab" className="dashtab" activeKey={this.state.key} onSelect={(key) => this.setState({ key })}>
                         <Tab eventKey="search-records" title="RECORDS">
                             <Records />
                         </Tab>

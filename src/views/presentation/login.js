@@ -49,26 +49,42 @@ class Login extends React.Component {
     handleSignUp() {
         this.props.history.push("/sign_up");
     }
+    componentDidMount() {
+        $("#bg-div").addClass("bg-div-2 animated fadeInRightBig");
+        $("#login").addClass("animated fadeInLeft");
+    }
+    componentWillUnmount() {
+        $("#bg-div").removeClass("bg-div-2 animated fadeInRightBig");
+        $("#login").removeClass("animated fadeInLeft");
+    }
     render() {
         return (
-            <div>
-                <div id="login">
-                    <h3>LOGIN</h3>
-                    <form id="login_form" onSubmit={this.handleLogin}>
-                        <label>Username:</label>
-                        <input id="login_email" value={this.state.email} type="text" placeholder="email" onChange={this.handleChangeUser}></input>
-                        <br />
-                        <label>Password:</label>
-                        <input id="login_password" value={this.state.password} type="text" placeholder="password" onChange={this.handleChangePass}></input>
-                        <br />
-                        <button id="login_button" className="btn btn-default btn-success" type="submit">Login</button>
-                        <a href="#">Forgot password?</a>
-                    </form>
-                    <br />
-                    <br />
-                    <hr />
-                    <h3>SIGNUP</h3>
-                    <button id="login.sign_up_button" className="btn btn-default btn-success" onClick={this.handleSignUp}>Sign Up</button>
+            <div>                
+                <div id="login" className="text-left page-body row">
+                    <div className="col-md-6">
+                        <h3 className="heading">Log in.</h3>
+                        <form id="login_form" onSubmit={this.handleLogin}>
+                            <div className="input-group float-label-control">
+                                <span className="input-group-addon"><i className="icon fas fa-envelope"></i></span>
+                                <label className="form-line"><input id="login_email" className="form-control" value={this.state.email} type="text" placeholder="Email" onChange={this.handleChangeUser}></input></label>
+                            </div>
+                            <div className="input-group float-label-control">
+                                <span className="input-group-addon"><i className="icon fas fa-key"></i></span>
+                                <label className="form-line"><input id="login_password" className="form-control" value={this.state.password} type="password" placeholder="Password" onChange={this.handleChangePass}></input>                                </label>
+                            </div>
+                            <div className="row row-center">
+                                <div className="center-div col-md-8">
+                                    <a className="text-link" href="#">Forgot password?</a>
+                                </div>
+                                <div className="col-md-4">
+                                    <button id="login.sign_up_button" className="btn btn-default btn-1 pull-right" type="submit">Log in</button>
+                                </div>
+                            </div>
+                        </form>
+                        <div id="input_non_member" className="signup-link">
+                            <p className="text-center">No account? <a className="text-link" onClick={this.handleSignUp}>Sign Up</a></p>
+                        </div>
+                    </div>
                 </div>
             </div>
         );

@@ -1,5 +1,6 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
+import { Grid, Row, Col } from "react-bootstrap";
 import axios from "axios";
 
 import baseURL from "../connect/connect";
@@ -22,6 +23,7 @@ class Form extends React.Component {
         this.handleChangeDocument = this.handleChangeDocument.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleUpload = this.handleUpload.bind(this);
+        this.addFile = this.addFile.bind(this);
     }
     handleChangeDisease(event) {
         this.setState({
@@ -82,29 +84,47 @@ class Form extends React.Component {
             alert("Select a document to upload!");
         } 
     }
+    addFile() {
+        $("#file").trigger("click");
+    }
     render() {
         return (
             <div>
+                <div id="bg-div" className="bg-div-1"></div>
                 <div id="form">
-                    <h1>FORM DATA</h1>
-                    <form id="record_form" onSubmit={this.handleSubmit}>
-                        <label>Disease:</label>
-                        <input id="disease" value={this.state.disease} type="text" placeholder="disease" onChange={this.handleChangeDisease}></input>
-                        <br />
-                        <label>Medication:</label>
-                        <input id="medication" value={this.state.medication} type="text" placeholder="medication" onChange={this.handleChangeMedication}></input>
-                        <br />
-                        <label>Doctor:</label>
-                        <input id="doctor" value={this.state.doctor} type="text" placeholder="doctor" onChange={this.handleChangeDoctor}></input>
-                        <br />
-                        <button id="form_button" className="btn btn-default btn-success" type="submit">Submit</button>
-                    </form>
-                    <h1>FORM DOCUMENT</h1>
-                    <form id="document_form" onSubmit={this.handleUpload}>
-                        <input id="file" type="file" onChange={this.handleChangeDocument}></input>
-                        <br />
-                        <button id="form_button" className="btn btn-default btn-success" type="submit">Submit</button>
-                    </form>
+                    <div className="row form">
+                        <div className="col-md-6">
+                            <form id="record_form" className="formbody" onSubmit={this.handleSubmit}>
+                                <Grid className="formgrid right-border">
+                                    <h1>Add a record.</h1>
+                                    <p>Enter the following details.</p>
+                                    <Row className="addfield">
+                                        <Col xs={6} className="align-left">Disease</Col>
+                                        <Col><input id="disease" className="inputfield" value={this.state.disease} type="text" placeholder="Disease" onChange={this.handleChangeDisease}></input></Col>
+                                    </Row>
+                                    <Row className="addfield">
+                                        <Col xs={6} className="align-left">Medication</Col>
+                                        <Col><input id="medication" className="inputfield" value={this.state.medication} type="text" placeholder="Medication" onChange={this.handleChangeMedication}></input></Col>
+                                    </Row>
+                                    <Row className="addfield">
+                                        <Col xs={6} className="align-left">Doctor</Col>
+                                        <Col><input id="doctor" className="inputfield" value={this.state.doctor} type="text" placeholder="Doctor" onChange={this.handleChangeDoctor}></input></Col>
+                                    </Row>
+                                    <Row className="addfield"><button id="form_button" className="formbtn btn-1 btn btn-default btn-success" type="submit">Submit</button></Row>
+                                </Grid>
+                            </form>
+                        </div>
+                        <div className="col-md-6 formbody">
+                            <Grid className="formgrid">
+                                <h1>Add your documents.</h1>
+                                <p>Upload your documents.</p>
+                                <form id="document_form" onSubmit={this.handleUpload}>
+                                    <Row className="addfield plusicon"><i id="add_doc" className="fas fa-plus-circle" onClick={this.addFile}></i><br></br><input id="file" type="file" className="addicon" onChange={this.handleChangeDocument}></input></Row>
+                                    <Row><button id="form_button" className="formbtn btn-1 btn btn-default btn-success" type="submit">Submit</button></Row>
+                                </form>
+                            </Grid>
+                        </div>
+                    </div>
                 </div>
             </div>
         );
