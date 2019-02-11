@@ -17,6 +17,7 @@ class Records extends React.Component {
         this.handleChange = this.handleChange.bind(this);
         this.handleSearch = this.handleSearch.bind(this);
         this.populate = this.populate.bind(this);
+        this.handleKeyPress = this.handleKeyPress.bind(this);
     }
 
     componentDidMount() {
@@ -31,6 +32,17 @@ class Records extends React.Component {
             console.log(err);
             this.props.history.push("/not_found");
         });
+        document.addEventListener("keydown", this.handleKeyPress);
+    }
+
+    componentWillUnmount() {
+        document.removeEventListener("keydown", this.handleKeyPress);
+    }
+
+    handleKeyPress(event) {
+        if (event.keyCode === 13) {
+            this.handleSearch();
+        }
     }
 
     handleChange(event) {

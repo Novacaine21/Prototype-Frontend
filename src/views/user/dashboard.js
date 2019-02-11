@@ -5,6 +5,7 @@ import axios from "axios";
 
 import Overview from "./overview";
 import MedicalHistory from "./medical_history";
+import DocumentUploads from "./document_uploads";
 import baseURL from "../connect/connect";
 
 // Axios
@@ -47,7 +48,7 @@ class DashBoard extends React.Component {
                             <MedicalHistory />
                         </Tab>
                         <Tab eventKey="document-uploads" title="DOCUMENT UPLOADS">
-                            <h1>DOCUMENT</h1>
+                            <DocumentUploads />
                         </Tab>
                     </Tabs>
                 </div>
