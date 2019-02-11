@@ -1,10 +1,11 @@
+import React from "react";
 import { createStore } from "redux";
-import { Provider } from "react-redux";
-import { connect } from "react-redux";
-import App from "./main";
+import { Provider, connect } from "react-redux";
 import ReactDOM from "react-dom";
 
-//Redux Store
+import App from "./main";
+
+// Redux Store
 const SET_ID = "SET_ID";
 const UNSET_ID = "UNSET_ID";
 const defaultState = {
@@ -12,12 +13,12 @@ const defaultState = {
 };
 const mainReducer = (state = defaultState, action) => {
     switch (action.type) {
-        case SET_ID:
-            return Object.assign({}, state, { _id: action.id });
-        case UNSET_ID:
-            return Object.assign({}, state, defaultState);
-        default:
-            return state;
+    case SET_ID:
+        return Object.assign({}, state, { _id: action.id });
+    case UNSET_ID:
+        return Object.assign({}, state, defaultState);
+    default:
+        return state;
     }
 };
 const setAction = (id) => {
@@ -34,10 +35,10 @@ const unsetAction = () => {
 const store = createStore(mainReducer);
 store.subscribe(() => console.log(store.getState()));
 
-//Match state, dispatch to props
+// Match state, dispatch to props
 const mapStateToProps = (state) => {
     return {
-        state: state
+        state
     };
 };
 const mapDispatchToProps = (dispatch) => {
@@ -53,21 +54,17 @@ const mapDispatchToProps = (dispatch) => {
 
 const Container = connect(mapStateToProps, mapDispatchToProps)(App);
 
-class Presentation extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-    render() {
-        return (
-            <Provider store={store}>
-                <Container />
-            </Provider>
-        );
-    }
+const Presentation = () => {
+    return (
+        <Provider store={store}>
+            <Container />
+        </Provider>
+    );
 };
 
 export default Presentation;
 
 ReactDOM.render(
     <Presentation />,
-    document.getElementById("root"));
+    document.getElementById("root")
+);
