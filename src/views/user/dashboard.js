@@ -1,54 +1,59 @@
 import React from "react";
-import { withRouter } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 import { Tabs, Tab } from "react-bootstrap";
 import axios from "axios";
 
-import Form from "./form";
-import Records from "./records";
-import Documents from "./documents";
+import Overview from "./overview";
+import MedicalHistory from "./medical_history";
 import baseURL from "../connect/connect";
 
-//Axios
+// Axios
 axios.defaults.baseURL = baseURL;
 
 class DashBoard extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            key: "search-records"
+            key: "overview"
         };
     }
+
     componentDidMount() {
         axios({
             method: "get",
             url: "/users/me",
             headers: { "x-auth": localStorage.getItem("token") }
         }).then((res) => {
-            localStorage.setItem("_id", res.data._id)
+            localStorage.setItem("_id", res.data.user);
         }).catch((err) => {
+            console.log(err);
             this.props.history.push("/not_found");
         });
     }
+
     render() {
         return (
             <div>
                 <div id="dashboard" className="page-body">
+                    <div id="bg-div" className="bg-div-1" />
                     <h1 className="heading">Dashboard.</h1>
-                    <Tabs id="dashboard_tab" className="dashtab" activeKey={this.state.key} onSelect={(key) => this.setState({ key })}>
-                        <Tab eventKey="search-records" title="RECORDS">
-                            <Records />
+                    <Tabs id="dashboard_tab" className="dashtab" activeKey={this.state.key} onSelect={key => this.setState({ key })}>
+                        <Tab eventKey="overview" title="OVERVIEW">
+                            <h4><Link to="/records" className="links">Search Records</Link></h4>
+                            <h4><Link to="/documents" className="links">Search Documents</Link></h4>
+                            <Overview />
                         </Tab>
-                        <Tab eventKey="search-documents" title="DOCUMENTS">
-                            <Documents />
+                        <Tab eventKey="medical-history" title="MEDICAL HISTORY">
+                            <MedicalHistory />
                         </Tab>
-                        <Tab eventKey="add" title="ADD">
-                            <Form />
+                        <Tab eventKey="document-uploads" title="DOCUMENT UPLOADS">
+                            <h1>DOCUMENT</h1>
                         </Tab>
                     </Tabs>
                 </div>
             </div>
         );
     }
-};
+}
 
 export default withRouter(DashBoard);

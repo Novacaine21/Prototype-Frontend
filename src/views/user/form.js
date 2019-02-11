@@ -1,11 +1,12 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
 import { Grid, Row, Col } from "react-bootstrap";
+import $ from "jquery";
 import axios from "axios";
 
 import baseURL from "../connect/connect";
 
-//Axios
+// Axios
 axios.defaults.baseURL = baseURL;
 
 class Form extends React.Component {
@@ -54,7 +55,7 @@ class Form extends React.Component {
         };
         axios({
             method: "post",
-            url: "/records",
+            url: "/record",
             data: body,
             headers: { "x-auth": localStorage.getItem("token") }
         }).then((res) => {

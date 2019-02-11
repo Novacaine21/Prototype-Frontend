@@ -4,7 +4,7 @@ import axios from "axios";
 
 import baseURL from "../connect/connect";
 
-//Axios
+// Axios
 axios.defaults.baseURL = baseURL;
 
 class Records extends React.Component {
@@ -18,63 +18,70 @@ class Records extends React.Component {
         this.handleSearch = this.handleSearch.bind(this);
         this.populate = this.populate.bind(this);
     }
+
+    componentDidMount() {
+        axios({
+            method: "get",
+            url: "/record",
+            headers: { "x-auth": localStorage.getItem("token") }
+        }).then((res) => {
+            localStorage.setItem("records", JSON.stringify(res.data.record[0].log));
+            this.populate(res.data.record[0].log);
+        }).catch((err) => {
+            console.log(err);
+            this.props.history.push("/not_found");
+        });
+    }
+
     handleChange(event) {
         this.setState({
             search: event.target.value
         });
     }
+
     handleSearch() {
-        var records = JSON.parse(localStorage.getItem("records"));
-        var regex = new RegExp(this.state.search, "gi");
-        var result = records.filter((record) => record.disease.match(regex));
+        const records = JSON.parse(localStorage.getItem("records"));
+        const regex = new RegExp(this.state.search, "gi");
+        const result = records.filter(record => record.match(regex));
         this.populate(result);
     }
+
     populate(records) {
-        var list = records.map((record) => {
+        const list = records.map((record) => {
+            const temp = record.split(":");
             return (
-                <tr key={record._id}>
-                    <td>{record.disease}</td>
-                    <td>{record.medication}</td>
-                    <td>{record.doctor}</td>
-                    <td>{record.enteredAt}</td>
+                <tr key={Math.ceil(Math.random() * 100000)}>
+                    <td>{temp[0].trim()}</td>
+                    <td>{temp[1].trim()}</td>
+                    <td>{temp[2].trim()}</td>
                 </tr>
-            )
+            );
         });
         this.setState({
             records: list
         });
     }
-    componentDidMount() {
-        axios({
-            method: "get",
-            url: "/records",
-            headers: { "x-auth": localStorage.getItem("token") }
-        }).then((res) => {
-            localStorage.setItem("records", JSON.stringify(res.data.records));
-            this.populate(res.data.records);
-        }).catch((err) => {
-            this.props.history.push("/not_found");
-        });
-    }
+
     render() {
         return (
             <div>
-                <div id="bg-div" className="bg-div-1"></div>
+                <div id="bg-div" className="bg-div-1" />
                 <div id="records">
                     <div className="searchbar input-group float-label-control">
-                        <span className="input-group-addon"><i className="icon fas fa-search"></i></span>
-                        <label className="form-line"><input id="search" className="form-control sb-field" value={this.state.search} type="text" placeholder="Disease" onChange={this.handleChange}></input></label>
+                        <span className="input-group-addon"><i className="icon fas fa-search" /></span>
+                        <label className="form-line" htmlFor="search_records">
+                            <input id="search_records" className="form-control sb-field" value={this.state.search} type="text" placeholder="Record Name" onChange={this.handleChange} />
+                        </label>
                         <div>
-                            <button id="search_button" className="btn btn-1 btn-default btn-success" onClick={this.handleSearch}>Search</button>
+                            <button id="search_button" className="btn btn-1 btn-default btn-success" onClick={this.handleSearch} type="button">Search</button>
                         </div>
                     </div>
                     <table className="text-center table table-hover">
                         <thead>
                             <tr>
-                                <th className="text-center align-middle">Disease</th>
-                                <th className="text-center align-middle">Medication</th>
-                                <th className="text-center align-middle">Doctor</th>
-                                <th className="text-center align-middle">Entry Date</th>
+                                <th className="text-center align-middle">RECORD TYPE</th>
+                                <th className="text-center align-middle">RECORD NAME</th>
+                                <th className="text-center align-middle">RECORD DATE</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -85,6 +92,6 @@ class Records extends React.Component {
             </div>
         );
     }
-};
+}
 
 export default withRouter(Records);
