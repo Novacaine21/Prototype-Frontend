@@ -28,10 +28,10 @@ class App extends React.Component {
                             <Header />
                             <div className="sitebody">
                                 <div id="bg-div"></div>
-                                <Route exact path="/dashboard" component={withRouter(Home)} />
+                                <Route exact path="/" component={withRouter(Home)} />
                                 <Route exact path="/login" component={withRouter(Login)} />
                                 <Route exact path="/sign_up" component={withRouter(SignUp)} />
-                                <Route exact path="/" component={withRouter(DashBoard)} />
+                                <Route exact path="/dashboard" component={withRouter(DashBoard)} />
                                 <Route exact path="/not_found" component={withRouter(NotFound)} />
                                 <Route exact path="/success" component={withRouter(Success)} />
                             </div>
