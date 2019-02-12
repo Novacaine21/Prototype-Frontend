@@ -3,5 +3,5 @@
 ```
 git add .
 git commit -m "<commit_name>"
-git push upstream develop
+git push -u upstream develop
 ```

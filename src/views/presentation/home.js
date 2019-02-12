@@ -19,6 +19,7 @@ class Home extends React.Component {
         this.props.history.push("/sign_up");
     }
     componentDidMount() {
+        console.log(__dirname);
         $("#bg-div").addClass("bg-div-1 animated fadeInRight");
         if(localStorage.getItem("token")) {
             axios({
@@ -33,13 +34,16 @@ class Home extends React.Component {
             });
         }
     }
+    componentDidMount() {
+        $("#bg-div").addClass("bg-div-1 appdiv animated fadeInRight");
+    }
     componentWillUnmount() {
-        $("#bg-div").removeClass("bg-div-1 animated fadeInRight");
+        $("#bg-div").removeClass("bg-div-1 appdiv animated fadeInRight");
     }
     render() {
         return (
             <div>
-                <div id="home" className="text-left page-body">
+                <div id="home" className="page-body">
                     <h1 className="heading">We Take Care Of Your Medical Records.</h1>
                     <p >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nisi sem, hendrerit a auctor ac, pellentesque nec enim. Aliquam eu risus ut tortor consequat ornare.</p>
                     <div className="row home-buttons">

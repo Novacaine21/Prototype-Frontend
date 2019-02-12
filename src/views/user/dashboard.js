@@ -28,11 +28,15 @@ class DashBoard extends React.Component {
         }).catch((err) => {
             this.props.history.push("/not_found");
         });
+        $("#bg-div").addClass("bg-div-1 animated dashdiv fadeInRightBig");
+    }
+    componentWillUnmount() {
+        $("#bg-div").removeClass("bg-div-1 animated dashdiv fadeInRightBig");
     }
     render() {
         return (
             <div>
-                <div id="dashboard" className="page-body">
+                <div id="dashboard" className="dash-body">
                     <h1 className="heading">Dashboard.</h1>
                     <Tabs id="dashboard_tab" className="dashtab" activeKey={this.state.key} onSelect={(key) => this.setState({ key })}>
                         <Tab eventKey="search-records" title="RECORDS">
@@ -42,7 +46,7 @@ class DashBoard extends React.Component {
                             <Documents />
                         </Tab>
                         <Tab eventKey="add" title="ADD">
-                            <Form />
+                            <Form/>
                         </Tab>
                     </Tabs>
                 </div>

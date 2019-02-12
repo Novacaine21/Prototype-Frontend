@@ -50,11 +50,11 @@ class Login extends React.Component {
         this.props.history.push("/sign_up");
     }
     componentDidMount() {
-        $("#bg-div").addClass("bg-div-2 animated fadeInRightBig");
+        $("#bg-div").addClass("bg-div-2 appdiv animated fadeInRightBig");
         $("#login").addClass("animated fadeInLeft");
     }
     componentWillUnmount() {
-        $("#bg-div").removeClass("bg-div-2 animated fadeInRightBig");
+        $("#bg-div").removeClass("bg-div-2 animated appdiv fadeInRightBig");
         $("#login").removeClass("animated fadeInLeft");
     }
     render() {

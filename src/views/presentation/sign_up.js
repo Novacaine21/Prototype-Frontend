@@ -46,11 +46,11 @@ class SignUp extends React.Component {
         });
     }
     componentDidMount() {
-        $("#bg-div").addClass("bg-div-2 animated fadeInRightBig");
+        $("#bg-div").addClass("bg-div-2 appdiv animated fadeInRightBig");
         $("#sign_up").addClass("animated fadeInLeft");
     }
     componentWillUnmount() {
-        $("#bg-div").removeClass("bg-div-2 animated fadeInRightBig");
+        $("#bg-div").removeClass("bg-div-2 appdiv animated fadeInRightBig");
         $("#sign_up").removeClass("animated fadeInLeft");
     }
     render() {

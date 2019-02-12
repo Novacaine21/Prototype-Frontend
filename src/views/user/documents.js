@@ -76,7 +76,7 @@ class Documents extends React.Component {
     render() {
         return (
             <div>
-                <div id="bg-div" className="bg-div-1"></div>
+                {/* <div id="bg-div" className="bg-div-1"></div> */}
                 <div id="document">
                     <div className="searchbar input-group float-label-control">
                         <span className="input-group-addon"><i className="icon fas fa-search"></i></span>

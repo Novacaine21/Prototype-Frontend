@@ -90,7 +90,7 @@ class Form extends React.Component {
     render() {
         return (
             <div>
-                <div id="bg-div" className="bg-div-1"></div>
+                
                 <div id="form">
                     <div className="row form">
                         <div className="col-md-6">
@@ -99,7 +99,7 @@ class Form extends React.Component {
                                     <h1>Add a record.</h1>
                                     <p>Enter the following details.</p>
                                     <Row className="addfield">
-                                        <Col xs={6} className="align-left">Disease</Col>
+                                        <Col xs={6} className="align-left"><p>Disease</p></Col>
                                         <Col><input id="disease" className="inputfield" value={this.state.disease} type="text" placeholder="Disease" onChange={this.handleChangeDisease}></input></Col>
                                     </Row>
                                     <Row className="addfield">

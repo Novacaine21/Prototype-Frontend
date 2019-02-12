@@ -18,6 +18,7 @@ body{
     flex-wrap: wrap;
     align-content: flex-start;
 }
+
 .inputfield{
     border:none; 
     padding: 0.1em 0em 1px 5px; 
@@ -34,12 +35,23 @@ body{
     border-bottom: 2px solid $accent-color;
 }
 
+.site{
+    display:flex;
+    min-height:100vh;
+    flex-direction: column;
+}
+
+.sitebody{
+    flex:1;
+}
+
+
+
 .bg-div-1{
     display: absolute;
     width:33vw;
-    min-height:130vh;
     background-color:$accent-color; 
-    position: absolute;
+    position: fixed;
     top: 0;
     right: 0;
     z-index: -1;
@@ -48,13 +60,18 @@ body{
 .bg-div-2{
     display: absolute;
     width:66vw;
-    height:120vh;
     background-color:$accent-color;
-    position: absolute;
+    position:fixed;
     top: 0;
     right:0;
     z-index: -100;
+}
 
+.appdiv{
+    height:100vh;
+}
+.dashdiv{
+    height:150vh;
 }
 
 // .body1{
@@ -220,8 +237,12 @@ body{
 
 //dashboard
 .dashboard{
-    padding:30px 45px;
-    
+    padding:30px 45px;   
+}
+.dash-body{
+    height: 150vh;
+    padding:100px 50px 0px;
+    width : 50vw;
 }
 .dashtab{
     width:60vw;
@@ -277,7 +298,6 @@ body{
         color: $accent-color;
     }
     p{
-        text-align:center;
         color: $secondary-color;
     }
     .right-border{
@@ -337,7 +357,6 @@ body{
         .social:hover{
             color: $accent-color;
         }  
-
     }
     .right-bar{
         padding:50px 60px;
@@ -347,7 +366,6 @@ body{
     }
     .footer-head{
         color:$accent-color;
-
         font-weight: normal;
         font-size: 18px;
     }
