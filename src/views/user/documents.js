@@ -32,7 +32,6 @@ class Documents extends React.Component {
             this.populate(res.data.docs);
         }).catch((err) => {
             console.log(err);
-            this.props.history.push("/not_found");
         });
         document.addEventListener("keydown", this.handleKeyPress);
     }

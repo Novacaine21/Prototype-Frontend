@@ -16,7 +16,7 @@ class Profile extends React.Component {
             sex: "",
             occupation: "",
             address: "",
-            newAccount: true
+            newAccount: null
         };
         this.handleChangeAge = this.handleChangeAge.bind(this);
         this.handleChangeWeight = this.handleChangeWeight.bind(this);
@@ -32,42 +32,18 @@ class Profile extends React.Component {
             url: "/users/me",
             headers: { "x-auth": localStorage.getItem("token") }
         }).then((res) => {
-            localStorage.setItem("_id", res.data.user);
-            if (JSON.stringify(res.data.userDetails).length > 2) {
-                this.setState({
-                    age: res.data.userDetails.age,
-                    weight: res.data.userDetails.weight,
-                    sex: res.data.userDetails.sex,
-                    occupation: res.data.userDetails.occupation,
-                    address: res.data.userDetails.address,
-                    newAccount: false
-                });
-            }
-        }).catch((err) => {
-            console.log(err);
-            this.props.history.push("/not_found");
-        });
-
-        axios({
-            method: "get",
-            url: "/record",
-            headers: { "x-auth": localStorage.getItem("token") }
-        }).then((res) => {
-            if (res.data.record.length === 0) {
-                axios({
-                    method: "post",
-                    url: "/record",
-                    headers: { "x-auth": localStorage.getItem("token") }
-                }).then((resp) => {
-                    localStorage.setItem("rec_id", resp.data._id);
-                }).catch((error) => {
-                    console.log(error);
-                    this.props.history.push("/not_found");
-                });
-            }
-        }).catch((err) => {
-            console.log(err);
-            this.props.history.push("/not_found");
+            this.setState({
+                age: res.data.userDetails.age,
+                weight: res.data.userDetails.weight,
+                sex: res.data.userDetails.sex,
+                occupation: res.data.userDetails.occupation,
+                address: res.data.userDetails.address,
+                newAccount: false
+            });
+        }).catch(() => {
+            this.setState({
+                newAccount: true
+            });
         });
     }
 
@@ -116,7 +92,7 @@ class Profile extends React.Component {
                 url: "/users/me",
                 data: body,
                 headers: { "x-auth": localStorage.getItem("token") }
-            }).then((res) => {
+            }).then(() => {
                 alert(`Account created successfully at ${new Date().toString()}.`);
                 this.props.history.push("/dashboard");
             }).catch((err) => {
@@ -129,7 +105,7 @@ class Profile extends React.Component {
                 url: "/users/me",
                 data: body,
                 headers: { "x-auth": localStorage.getItem("token") }
-            }).then((res) => {
+            }).then(() => {
                 alert(`Account updated successfully at ${new Date().toString()}.`);
                 this.props.history.push("/dashboard");
             }).catch((err) => {

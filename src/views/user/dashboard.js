@@ -24,11 +24,9 @@ class DashBoard extends React.Component {
             method: "get",
             url: "/users/me",
             headers: { "x-auth": localStorage.getItem("token") }
-        }).then((res) => {
-            localStorage.setItem("_id", res.data.user);
-        }).catch((err) => {
+        }).then().catch((err) => {
             console.log(err);
-            this.props.history.push("/not_found");
+            this.props.history.push("/login");
         });
     }
 

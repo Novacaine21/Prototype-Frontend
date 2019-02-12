@@ -25,16 +25,13 @@ class Overview extends React.Component {
             url: "/users/me",
             headers: { "x-auth": localStorage.getItem("token") }
         }).then((res) => {
-            localStorage.setItem("_id", res.data.user);
-            if (JSON.stringify(res.data.userDetails).length > 2) {
-                this.setState({
-                    age: res.data.userDetails.age,
-                    weight: res.data.userDetails.weight,
-                    sex: res.data.userDetails.sex,
-                    occupation: res.data.userDetails.occupation,
-                    address: res.data.userDetails.address
-                });
-            }
+            this.setState({
+                age: res.data.userDetails.age,
+                weight: res.data.userDetails.weight,
+                sex: res.data.userDetails.sex,
+                occupation: res.data.userDetails.occupation,
+                address: res.data.userDetails.address
+            });
         }).catch((err) => {
             console.log(err);
             this.props.history.push("/not_found");

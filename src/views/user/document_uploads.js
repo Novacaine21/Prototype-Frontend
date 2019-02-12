@@ -36,7 +36,6 @@ class DocumentUploads extends React.Component {
             this.populate(res.data.docs);
         }).catch((err) => {
             console.log(err);
-            this.props.history.push("/not_found");
         });
     }
 
@@ -100,7 +99,7 @@ class DocumentUploads extends React.Component {
                 alert(`Document "${res.data.name}" Submitted at ${new Date().toString()}.`);
                 this.handleClose();
                 this.componentDidMount();
-            }).catch((err) => {
+            }).catch(() => {
                 this.props.history.push("/not_found");
             });
         } else {

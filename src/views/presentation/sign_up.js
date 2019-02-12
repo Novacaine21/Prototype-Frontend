@@ -53,9 +53,17 @@ class SignUp extends React.Component {
             data: body
         }).then((res) => {
             localStorage.setItem("token", res.headers["x-auth"]);
-            localStorage.setItem("_id", res.data._id);
+            axios({
+                method: "post",
+                url: "/record",
+                headers: { "x-auth": localStorage.getItem("token") }
+            }).then().catch((error) => {
+                console.log(error);
+                this.props.history.push("/not_found");
+            });
             this.props.history.push("/profile");
         }).catch((err) => {
+            console.log(err);
             this.props.history.push("/not_found");
         });
     }
