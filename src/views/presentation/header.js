@@ -13,37 +13,21 @@ class Header extends React.Component {
         this.handleLogout = this.handleLogout.bind(this);
     }
 
-    componentDidMount() {
-        axios({
-            method: "get",
-            url: "/users/me",
-            headers: { "x-auth": localStorage.getItem("token") }
-        }).then((res) => {
-            localStorage.setItem("_id", res.data._id);
-        }).catch((err) => {
-            localStorage.removeItem("token");
-            this.props.history.push("/");
-        });
-    }
-
     handleLogout() {
         axios({
             method: "delete",
             url: "/users/me/token",
             headers: { "x-auth": localStorage.getItem("token") }
         }).then((res) => {
-            console.log(res.data);
             localStorage.removeItem("token");
             localStorage.removeItem("records");
             localStorage.removeItem("docs");
-            localStorage.removeItem("_id");
             this.props.history.push("/");
         }).catch((err) => {
             console.log(err);
             localStorage.removeItem("token");
             localStorage.removeItem("records");
             localStorage.removeItem("docs");
-            localStorage.removeItem("_id");
             this.props.history.push("/not_found");
         });
     }

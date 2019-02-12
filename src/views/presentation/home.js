@@ -16,18 +16,6 @@ class Home extends React.Component {
 
     componentDidMount() {
         $("#bg-div").addClass("bg-div-1 animated fadeInRight");
-        if (localStorage.getItem("token")) {
-            axios({
-                method: "get",
-                url: "/users/me",
-                headers: { "x-auth": localStorage.getItem("token") }
-            }).then((res) => {
-                localStorage.setItem("_id", res.data.user);
-                this.props.history.push("/dashboard");
-            }).catch((err) => {
-                this.props.history.push("/login");
-            });
-        }
     }
 
     componentWillUnmount() {

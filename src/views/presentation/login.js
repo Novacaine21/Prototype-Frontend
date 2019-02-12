@@ -54,9 +54,9 @@ class Login extends React.Component {
             data: body
         }).then((res) => {
             localStorage.setItem("token", res.headers["x-auth"]);
-            localStorage.setItem("_id", res.data._id);
             this.props.history.push("/dashboard");
         }).catch((err) => {
+            console.log(err);
             this.props.history.push("/not_found");
         });
     }
