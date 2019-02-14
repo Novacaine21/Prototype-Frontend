@@ -129,8 +129,10 @@ class DocumentUploads extends React.Component {
                         <table className="text-center table table-hover child">
                             <thead>
                                 <tr>
-                                    <th className="text-center align-middle">Scan Reports</th>
-                                    <button type="button" onClick={() => this.handleClick("scan_report")} className="add"><i className="fa fa-plus  text-right" /></button>
+                                    <th className="text-center align-middle">
+                                        Scan Reports
+                                        <button type="button" onClick={() => this.handleClick("scan_report")} className="add"><i className="fa fa-plus  text-right" /></button>
+                                    </th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -142,8 +144,10 @@ class DocumentUploads extends React.Component {
                         <table className="text-center table table-hover child">
                             <thead>
                                 <tr>
-                                    <th className="text-center align-middle">Doctor Prescription</th>
-                                    <button type="button" onClick={() => this.handleClick("doctor_prescription")} className="add"><i className="fa fa-plus" /></button>
+                                    <th className="text-center align-middle">
+                                        Doctor Prescription
+                                        <button type="button" onClick={() => this.handleClick("doctor_prescription")} className="add"><i className="fa fa-plus" /></button>
+                                    </th>
                                 </tr>
                             </thead>
                             <tbody>

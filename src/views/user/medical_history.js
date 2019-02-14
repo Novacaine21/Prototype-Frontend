@@ -171,8 +171,10 @@ class MedicalHistory extends React.Component {
                                     <table className="text-center table table-hover box-child">
                                         <thead>
                                             <tr>
-                                                <th className="text-center align-middle">ALLERGY</th>
-                                                <button type="button" onClick={() => this.handleClick("allergy")} className="add"><i className="fa fa-plus" /></button>
+                                                <th className="text-center align-middle">
+                                                    ALLERGY
+                                                    <button type="button" onClick={() => this.handleClick("allergy")} className="add"><i className="fa fa-plus" /></button>
+                                                </th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -186,8 +188,10 @@ class MedicalHistory extends React.Component {
                                     <table className="text-center table table-hover box-child">
                                         <thead>
                                             <tr>
-                                                <th className="text-center align-middle">MEDICATION</th>
-                                                <button type="button" onClick={() => this.handleClick("medication")} className="add"><i className="fa fa-plus" /></button>
+                                                <th className="text-center align-middle">
+                                                    MEDICATION
+                                                    <button type="button" onClick={() => this.handleClick("medication")} className="add"><i className="fa fa-plus" /></button>
+                                                </th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -201,8 +205,10 @@ class MedicalHistory extends React.Component {
                                     <table className="text-center table table-hover box-child">
                                         <thead>
                                             <tr>
-                                                <th className="text-center align-middle">PROBLEM</th>
-                                                <button type="button" onClick={() => this.handleClick("problem")} className="add"><i className="fa fa-plus" /></button>
+                                                <th className="text-center align-middle">
+                                                    PROBLEM
+                                                    <button type="button" onClick={() => this.handleClick("problem")} className="add"><i className="fa fa-plus" /></button>
+                                                </th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -218,8 +224,10 @@ class MedicalHistory extends React.Component {
                                     <table className="text-center table table-hover box-child">
                                         <thead>
                                             <tr>
-                                                <th className="text-center align-middle">IMMUNIZATION</th>
-                                                <button type="button" onClick={() => this.handleClick("immunization")} className="add"><i className="fa fa-plus" /></button>
+                                                <th className="text-center align-middle">
+                                                    IMMUNIZATION
+                                                    <button type="button" onClick={() => this.handleClick("immunization")} className="add"><i className="fa fa-plus" /></button>
+                                                </th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -233,8 +241,10 @@ class MedicalHistory extends React.Component {
                                     <table className="text-center table table-hover box-child">
                                         <thead>
                                             <tr>
-                                                <th className="text-center align-middle">VITAL SIGN</th>
-                                                <button type="button" onClick={() => this.handleClick("vital_sign")} className="add"><i className="fa fa-plus" /></button>
+                                                <th className="text-center align-middle">
+                                                    VITAL SIGN
+                                                    <button type="button" onClick={() => this.handleClick("vital_sign")} className="add"><i className="fa fa-plus" /></button>
+                                                </th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -248,8 +258,10 @@ class MedicalHistory extends React.Component {
                                     <table className="text-center table table-hover box-child">
                                         <thead>
                                             <tr>
-                                                <th className="text-center align-middle">PROCEDURE</th>
-                                                <button type="button" onClick={() => this.handleClick("procedure")} className="add"><i className="fa fa-plus" /></button>
+                                                <th className="text-center align-middle">
+                                                    PROCEDURE
+                                                    <button type="button" onClick={() => this.handleClick("procedure")} className="add"><i className="fa fa-plus" /></button>
+                                                </th>
                                             </tr>
                                         </thead>
                                         <tbody>
