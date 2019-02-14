@@ -2,7 +2,7 @@ import React from "react";
 import { Grid, Col, Row } from "react-bootstrap";
 import { withRouter } from "react-router-dom";
 import axios from "axios";
-
+import { Grid, Row, Col } from "react-bootstrap";
 import baseURL from "../connect/connect";
 
 // Axios
