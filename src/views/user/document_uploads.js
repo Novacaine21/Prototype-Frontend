@@ -120,23 +120,17 @@ class DocumentUploads extends React.Component {
                         <input id="file" type="file" onChange={this.handleChangeDocument} />
                     </Modal.Body>
                     <Modal.Footer>
-                        <Button variant="secondary" onClick={this.handleClose}>
-                            Close
-                        </Button>
-                        <Button variant="primary" onClick={this.handleSubmit}>
-                            Submit
-                        </Button>
+                        <Button variant="secondary" onClick={this.handleClose}>Close</Button>
+                        <Button variant="primary" onClick={this.handleSubmit}>Submit</Button>
                     </Modal.Footer>
                 </Modal>
                 <div id="document_uploads">
-                    <div id="scan_report">
-                        <table className="text-center table table-hover">
+                    <div id="scan_report" className="file-upload">
+                        <table className="text-center table table-hover child">
                             <thead>
                                 <tr>
-                                    <th className="text-center align-middle">
-                                        SCAN REPORTS
-                                        <button type="button" onClick={() => this.handleClick("scan_report")}><i className="fa fa-plus" /></button>
-                                    </th>
+                                    <th className="text-center align-middle">Scan Reports</th>
+                                    <button type="button" onClick={() => this.handleClick("scan_report")} className="add"><i className="fa fa-plus" /></button>
                                 </tr>
                             </thead>
                             <tbody>
@@ -144,14 +138,12 @@ class DocumentUploads extends React.Component {
                             </tbody>
                         </table>
                     </div>
-                    <div id="doctor_prescription">
-                        <table className="text-center table table-hover">
+                    <div id="doctor_prescription" className="file-upload">
+                        <table className="text-center table table-hover child">
                             <thead>
                                 <tr>
-                                    <th className="text-center align-middle">
-                                        DOCTOR PRESCRIPTION
-                                        <button type="button" onClick={() => this.handleClick("doctor_prescription")}><i className="fa fa-plus" /></button>
-                                    </th>
+                                    <th className="text-center align-middle">Docter Prescription</th>
+                                    <button type="button" onClick={() => this.handleClick("doctor_prescription")} className="add"><i className="fa fa-plus" /></button>
                                 </tr>
                             </thead>
                             <tbody>

@@ -1,7 +1,7 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
 import axios from "axios";
-
+import { Grid, Row, Col } from "react-bootstrap";
 import baseURL from "../connect/connect";
 
 // Axios
@@ -119,37 +119,56 @@ class Profile extends React.Component {
         return (
             <div>
                 <div id="bg-div" className="bg-div-1" />
-                <div id="profile">
-                    <h1>PROFILE</h1>
-                    <br />
-                    <hr />
+                <div id="profile" className="text-left page-body">
+                    <h1 className="heading">Profile</h1>
                     <form id="profile_form" onSubmit={this.handleSubmit}>
-                        <label htmlFor="age">
-                            AGE:
-                            <input id="age" value={this.state.age} type="number" placeholder="Age" onChange={this.handleChangeAge} required />
-                        </label>
-                        <br />
-                        <label htmlFor="weight">
-                            WEIGHT:
-                            <input id="weight" value={this.state.weight} type="number" placeholder="Weight" onChange={this.handleChangeWeight} required />
-                        </label>
-                        <br />
-                        <label htmlFor="sex">
-                            SEX:
-                            <input id="sex" value={this.state.sex} type="text" placeholder="Male/Female" onChange={this.handleChangeSex} required />
-                        </label>
-                        <br />
-                        <label htmlFor="occupation">
-                            OCCUPATION:
-                            <input id="occupation" value={this.state.occupation} type="text" placeholder="Occupation" onChange={this.handleChangeOccupation} />
-                        </label>
-                        <br />
-                        <label htmlFor="address">
-                            ADDRESS:
-                            <input id="address" value={this.state.address} type="text" placeholder="Address" onChange={this.handleChangeAddress} />
-                        </label>
-                        <br />
-                        <button id="profile_button" className="btn btn-default btn-success" type="submit">Submit</button>
+                        <Grid className="pro-grid">
+                            <Row className="pro-field">
+                                <Col xs={3}>
+                                    <label htmlFor="age">Age:</label>
+                                </Col>
+                                <Col xs={9}>
+                                    <input id="age" className="inputfield" value={this.state.age} type="number" placeholder="Age" onChange={this.handleChangeAge} required />
+                                </Col>
+                            </Row>
+                            <Row className="pro-field">
+                                <Col xs={3}>
+                                    <label htmlFor="weight">Weight:</label>
+                                </Col>
+                                <Col xs={9}>
+                                    <input id="weight" className="inputfield" value={this.state.weight} type="number" placeholder="Weight" onChange={this.handleChangeWeight} required />
+                                </Col>    
+                            </Row>
+                            <Row className="pro-field">
+                                <Col xs={3}>
+                                    <label htmlFor="sex">Sex:</label>
+                                </Col>
+                                <Col xs={9}>
+                                    <input id="sex" className="inputfield" value={this.state.sex} type="text" placeholder="Male/Female" onChange={this.handleChangeSex} required />
+                                </Col>
+                            </Row>
+                            <Row className="pro-field">
+                                <Col xs={3}>
+                                    <label htmlFor="occupation">OCCUPATION:</label>
+                                </Col>
+                                <Col xs={9}>
+                                    <input id="occupation" className="inputfield" value={this.state.occupation} type="text" placeholder="Occupation" onChange={this.handleChangeOccupation} />
+                                </Col>
+                            </Row>
+                            <Row className="pro-field">
+                                <Col xs={3}>
+                                    <label htmlFor="address">ADDRESS:</label>
+                                </Col>
+                                <Col xs={6}>
+                                    <input id="address" className="inputfield" value={this.state.address} type="text" placeholder="Address" onChange={this.handleChangeAddress} />
+                                </Col>
+                            </Row>
+                            <Row className="pro-field justify-content-center d-flex text-center">
+                                <Col xs={6}>
+                                    <button id="profile_button" className="btn btn-1 " type="submit">Submit</button>
+                                </Col>
+                            </Row>
+                        </Grid>
                     </form>
                 </div>
             </div>

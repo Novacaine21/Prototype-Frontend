@@ -1,5 +1,11 @@
 import React from "react";
-import { Modal, Button } from "react-bootstrap";
+import {
+    Modal,
+    Button,
+    Grid,
+    Row,
+    Col
+} from "react-bootstrap";
 import { withRouter } from "react-router-dom";
 import axios from "axios";
 
@@ -150,7 +156,6 @@ class MedicalHistory extends React.Component {
     render() {
         return (
             <div>
-                <div id="bg-div" className="bg-div-1" />
                 <Modal show={this.state.show} onHide={this.handleClose}>
                     <Modal.Header closeButton>
                         <Modal.Title>{this.state.modalHeading}</Modal.Title>
@@ -160,105 +165,107 @@ class MedicalHistory extends React.Component {
                         <input value={this.state.submit} type="text" placeholder="Record" onChange={this.handleChange} />
                     </Modal.Body>
                     <Modal.Footer>
-                        <Button variant="secondary" onClick={this.handleClose}>
-                            Close
-                        </Button>
-                        <Button variant="primary" onClick={this.handleSubmit}>
-                            Submit
-                        </Button>
+                        <Button variant="secondary" onClick={this.handleClose}>Close</Button>
+                        <Button variant="primary" onClick={this.handleSubmit}>Submit</Button>
                     </Modal.Footer>
                 </Modal>
-                <div id="medical_history">
-                    <div id="allergy">
-                        <table className="text-center table table-hover">
-                            <thead>
-                                <tr>
-                                    <th className="text-center align-middle">
-                                        ALLERGY
-                                        <button type="button" onClick={() => this.handleClick("allergy")}><i className="fa fa-plus" /></button>
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {this.state.allergy}
-                            </tbody>
-                        </table>
-                    </div>
-                    <div id="medication">
-                        <table className="text-center table table-hover">
-                            <thead>
-                                <tr>
-                                    <th className="text-center align-middle">
-                                        MEDICATION
-                                        <button type="button" onClick={() => this.handleClick("medication")}><i className="fa fa-plus" /></button>
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {this.state.medication}
-                            </tbody>
-                        </table>
-                    </div>
-                    <div id="problem">
-                        <table className="text-center table table-hover">
-                            <thead>
-                                <tr>
-                                    <th className="text-center align-middle">
-                                        PROBLEM
-                                        <button type="button" onClick={() => this.handleClick("problem")}><i className="fa fa-plus" /></button>
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {this.state.problem}
-                            </tbody>
-                        </table>
-                    </div>
-                    <div id="immunization">
-                        <table className="text-center table table-hover">
-                            <thead>
-                                <tr>
-                                    <th className="text-center align-middle">
-                                        IMMUNIZATION
-                                        <button type="button" onClick={() => this.handleClick("immunization")}><i className="fa fa-plus" /></button>
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {this.state.immunization}
-                            </tbody>
-                        </table>
-                    </div>
-                    <div id="vital_sign">
-                        <table className="text-center table table-hover">
-                            <thead>
-                                <tr>
-                                    <th className="text-center align-middle">
-                                        VITAL SIGN
-                                        <button type="button" onClick={() => this.handleClick("vital_sign")}><i className="fa fa-plus" /></button>
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {this.state.vitalSign}
-                            </tbody>
-                        </table>
-                    </div>
-                    <div id="procedure">
-                        <table className="text-center table table-hover">
-                            <thead>
-                                <tr>
-                                    <th className="text-center align-middle">
-                                        PROCEDURE
-                                        <button type="button" onClick={() => this.handleClick("procedure")}><i className="fa fa-plus" /></button>
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {this.state.procedure}
-                            </tbody>
-                        </table>
-                    </div>
+                <div id="medical_history" className="med-history">
+                    <Grid>
+                        <Row className="box-row">
+                            <Col xs={4}>
+                                <div id="allergy" className="box">
+                                    <table className="text-center table table-hover box-child">
+                                        <thead>
+                                            <tr>
+                                                <th className="text-center align-middle">ALLERGY</th>
+                                                <button type="button" onClick={() => this.handleClick("allergy")} className="add"><i className="fa fa-plus" /></button>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {this.state.allergy}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </Col>
+                            <Col xs={4}>
+                                <div id="medication" className="box">
+                                    <table className="text-center table table-hover box-child">
+                                        <thead>
+                                            <tr>
+                                                <th className="text-center align-middle">MEDICATION</th>
+                                                <button type="button" onClick={() => this.handleClick("medication")} className="add"><i className="fa fa-plus" /></button>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {this.state.medication}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </Col>
+                            <Col xs={4}>
+                                <div id="problem" className="box">
+                                    <table className="text-center table table-hover box-child">
+                                        <thead>
+                                            <tr>
+                                                <th className="text-center align-middle">PROBLEM</th>
+                                                <button type="button" onClick={() => this.handleClick("problem")} className="add"><i className="fa fa-plus" /></button>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {this.state.problem}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </Col>
+                        </Row>
+                        <Row className="box-row">
+                            <Col xs={4}>
+                                <div id="immunization" className="box">
+                                    <table className="text-center table table-hover box-child">
+                                        <thead>
+                                            <tr>
+                                                <th className="text-center align-middle">IMMUNIZATION</th>
+                                                <button type="button" onClick={() => this.handleClick("immunization")} className="add"><i className="fa fa-plus" /></button>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {this.state.immunization}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </Col>
+                            <Col xs={4}>
+                                <div id="vital_sign" className="box">
+                                    <table className="text-center table table-hover box-child">
+                                        <thead>
+                                            <tr>
+                                                <th className="text-center align-middle">VITAL SIGN</th>
+                                                <button type="button" onClick={() => this.handleClick("vital_sign")} className="add"><i className="fa fa-plus" /></button>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {this.state.vitalSign}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </Col>
+                            <Col xs={4}>
+                                <div id="procedure" className="box">
+                                    <table className="text-center table table-hover box-child">
+                                        <thead>
+                                            <tr>
+                                                <th className="text-center align-middle">PROCEDURE</th>
+                                                <button type="button" onClick={() => this.handleClick("procedure")} className="add"><i className="fa fa-plus" /></button>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {this.state.procedure}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </Col>
+                        </Row>
+                    </Grid>
                 </div>
             </div>
         );

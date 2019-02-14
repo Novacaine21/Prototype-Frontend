@@ -19,7 +19,8 @@ body{
     align-content: flex-start;
 }
 .inputfield{
-    border:none; 
+    border:none;
+    width:50%; 
     padding: 0.1em 0em 1px 5px; 
     border: none; 
     border-radius: 0px; 
@@ -27,7 +28,6 @@ body{
     outline: none; 
     margin: 0px; 
     background: none;
-
 }
 
 .inputfield:focus{
@@ -125,16 +125,24 @@ body{
     background-color: $accent-color;
     border:none;
 }
-.btn-1:hover{
+.btn-1:hover,
+.btn-block:hover{
     background-color: $light-green;
     color: white;
 }
-
 .btn-1:active,
 .btn-1:focus{
     background-color: #3EA36B;
     color:white;
     outline:none;
+    border:none;
+}
+
+.btn-block{
+    width:100%;
+    color:white;
+    border-radius: 20px;
+    background-color: $accent-color;
     border:none;
 }
 
@@ -290,6 +298,7 @@ body{
     }     
     .addfield {
         padding:10px 0px;
+        max-width:30vw;
     } 
     .formgrid{
         width:100%;
@@ -306,6 +315,7 @@ body{
         color:$light-green;
     }
 }
+
 //home page
 .home-buttons{
     padding-top: 20px;
@@ -323,7 +333,86 @@ body{
     right: 10vw;
 }
 
+//overview
+.overview{
+    display: fixed;
+    width:33vw;
+    min-height:60vh;
+    position: absolute;
+    top: 200px;
+    right: 0px;
+    padding: 100px 20px; 
+}
+.overgrid{
+    width :30vw;
+    padding:20px;
+    padding-left: 100px;
+    font-size: 20px;
+    .overfield{
+        padding: 5px;
+        .overlabel{
+            color: $secondary-color;    
+        }
+        .value{
+            color: white;
+        }
+    }
+}
 
+//medical-history
+.med-history{
+    width:100%;
+    .box-row{
+        width:60vw;
+        .table{
+            position:absolute;
+            top:5px;
+        }    
+        .box{
+            margin-bottom:10px;
+            width:300px;
+            min-height: 150px;
+            margin-right:-50px;
+            border:1px solid $light-green;
+            .box-child{
+                position:relative;
+                left:40px;
+
+            }
+        }
+    }
+}
+//documents-upload
+.file-upload{
+    display: inline-block;
+    margin:20px;
+    width:400px;;
+    height: 40vh;
+    border: 1px solid $light-green;
+    .child{
+        position:relative;
+        left:30px;
+    }
+}
+//addbutton
+.add{
+    position: relative;
+    right:50px;
+    top:5px
+}
+//profile
+.pro-grid{
+    padding:20px 20px 20px;
+
+    .pro-field{
+        padding:20px;
+    }
+
+}
+//searchbar
+.search-body{
+    min-height:100px;
+}
 .footer{
     background-color: #05386B;
     padding:50px 60px;
