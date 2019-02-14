@@ -37,8 +37,8 @@ class Home extends React.Component {
                     <h1 className="heading">We Take Care Of Your Medical Records.</h1>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nisi sem, hendrerit a auctor ac, pellentesque nec enim. Aliquam eu risus ut tortor consequat ornare.</p>
                     <div className="row home-buttons">
-                        <button id="login_home" className="home-btn btn btn-default btn-1 pull-left" type="button" onClick={this.handleLogin}>Login</button>
-                        <button id="sign_up_home" className="home-btn btn btn-default btn-1 " type="button" onClick={this.handleSignUp}>Sign Up</button>
+                        <button id="login_home" className="home-btn btn btn-1 pull-left" type="button" onClick={this.handleLogin}>Login</button>
+                        <button id="sign_up_home" className="home-btn btn btn-1 " type="button" onClick={this.handleSignUp}>Sign Up</button>
                     </div>
                     <img className="home-img" src="/public/images/homepage-illustration.png" alt="home_page_illustration" />
                 </div>

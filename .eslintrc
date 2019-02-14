@@ -62,6 +62,16 @@
             "event",
             "fdescribe"
         ],
+        "object-curly-newline": [
+            "error",
+            {
+                "ImportDeclaration": "never",
+                "ExportDeclaration": {
+                    "multiline": true,
+                    "minProperties": 3
+                }
+            }
+        ],
         "react/jsx-filename-extension": 0,
         "react/jsx-indent": [
             2,

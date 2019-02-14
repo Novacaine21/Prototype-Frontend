@@ -15,7 +15,7 @@ class DashBoard extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            key: "overview"
+            key: "medical-history"
         };
     }
 
@@ -33,22 +33,24 @@ class DashBoard extends React.Component {
     render() {
         return (
             <div>
-                <div id="dashboard" className="page-body">
+                <div id="dashboard">
                     <div id="bg-div" className="bg-div-1" />
-                    <h1 className="heading">Dashboard.</h1>
-                    <Tabs id="dashboard_tab" className="dashtab" activeKey={this.state.key} onSelect={key => this.setState({ key })}>
-                        <Tab eventKey="overview" title="OVERVIEW">
-                            <h4><Link to="/records" className="links">Search Records</Link></h4>
-                            <h4><Link to="/documents" className="links">Search Documents</Link></h4>
-                            <Overview />
-                        </Tab>
-                        <Tab eventKey="medical-history" title="MEDICAL HISTORY">
-                            <MedicalHistory />
-                        </Tab>
-                        <Tab eventKey="document-uploads" title="DOCUMENT UPLOADS">
-                            <DocumentUploads />
-                        </Tab>
-                    </Tabs>
+                    <div className="overview">
+                        <Overview />
+                    </div>
+                    <div className="page-body">
+                        <h1 className="heading">Dashboard.</h1>
+                        <Tabs id="dashboard_tab" className="dashtab" activeKey={this.state.key} onSelect={key => this.setState({ key })}>
+                            <Tab eventKey="medical-history" title="MEDICAL HISTORY">
+                                <h4><Link to="/records" className="btn btn-block">Search Records</Link></h4>
+                                <MedicalHistory />
+                            </Tab>
+                            <Tab eventKey="document-uploads" title="DOCUMENT UPLOADS">
+                                <h4><Link to="/documents" className="btn btn-block">Search Documents</Link></h4>
+                                <DocumentUploads />
+                            </Tab>
+                        </Tabs>
+                    </div>
                 </div>
             </div>
         );

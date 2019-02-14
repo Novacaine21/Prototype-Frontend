@@ -1,4 +1,5 @@
 import React from "react";
+import { Grid, Col, Row } from "react-bootstrap";
 import { withRouter } from "react-router-dom";
 import axios from "axios";
 
@@ -41,29 +42,39 @@ class Overview extends React.Component {
     render() {
         return (
             <div>
-                <div id="bg-div" className="bg-div-1" />
                 <div id="overview">
-                    <h1>OVERVIEW</h1>
-                    <h3>AGE</h3>
-                    <hr />
-                    {this.state.age}
-                    <br />
-                    <h3>WEIGHT</h3>
-                    <hr />
-                    {this.state.weight}
-                    <br />
-                    <h3>SEX</h3>
-                    <hr />
-                    {this.state.sex}
-                    <br />
-                    <h3>OCCUPATION</h3>
-                    <hr />
-                    {this.state.occupation}
-                    <br />
-                    <h3>ADDRESS</h3>
-                    <hr />
-                    {this.state.address}
-                    <br />
+                    <Grid className="overgrid">
+                        <Row className="overfield">
+                            <Col xs={6} className="overlabel">Age</Col>
+                            <Col xs={6} className="value">
+                                {this.state.age}
+                            </Col>
+                        </Row>
+                        <Row className="overfield">
+                            <Col xs={6} className="overlabel">Weight</Col>
+                            <Col xs={6} className="value">
+                                {this.state.weight}
+                            </Col>
+                        </Row>
+                        <Row className="overfield">
+                            <Col xs={6} className="overlabel">Sex</Col>
+                            <Col xs={6} className="value">
+                                {this.state.sex}
+                            </Col>
+                        </Row>
+                        <Row className="overfield">
+                            <Col xs={6} className="overlabel">Occupation</Col>
+                            <Col xs={6} className="value">
+                                {this.state.occupation}
+                            </Col>
+                        </Row>
+                        <Row className="overfield">
+                            <Col xs={6} className="overlabel">Address</Col>
+                            <Col xs={6} className="value">
+                                {this.state.address}
+                            </Col>
+                        </Row>
+                    </Grid>
                 </div>
             </div>
         );

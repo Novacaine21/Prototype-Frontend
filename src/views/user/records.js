@@ -78,7 +78,8 @@ class Records extends React.Component {
         return (
             <div>
                 <div id="bg-div" className="bg-div-1" />
-                <div id="records">
+                <div id="records" className="page-body">
+                    <h1 className="heading">Search Reacords</h1>
                     <div className="searchbar input-group float-label-control">
                         <span className="input-group-addon"><i className="icon fas fa-search" /></span>
                         <label className="form-line" htmlFor="search_records">
