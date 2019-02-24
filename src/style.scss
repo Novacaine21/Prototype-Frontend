@@ -118,6 +118,7 @@ body{
     color:$light-green;
 }
 
+
 .btn-1{
     width:80px;
     color:white;
@@ -125,10 +126,20 @@ body{
     background-color: $accent-color;
     border:none;
 }
+.btn-2{
+    width: auto;
+    color: $accent-color;
+    border-radius:20px;
+    border:2px solid $accent-color;
+    background: none;
+    font-weight:600;
+}
 .btn-1:hover,
+.btn-2:hover,
 .btn-block:hover{
     background-color: $light-green;
     color: white;
+    border:none;
 }
 .btn-1:active,
 .btn-1:focus{
@@ -221,7 +232,7 @@ body{
 }
 
 .page-body{
-    height: 90vh;
+    min-height: 90vh;
     padding:100px 50px 0px;
     width : 50vw;
 }
@@ -363,43 +374,44 @@ body{
 .med-history{
     width:100%;
     .box-row{
-        width:60vw;
-        .table{
-            position:absolute;
-            top:5px;
-        }    
+        width:60vw; 
+        display:flex;
+        flex-direction: row; 
+        justify-content:space-between; 
         .box{
-            margin-bottom:45px;
-            width:18vw;
-            min-height: 150px;
+            display:flex;
+            flex-direction:column;
+            justify-content: space-between;
+            margin-bottom:10px;
+            width:250px;
+            min-height: 200px;
             margin-right:-50px;
             border:1px solid $light-green;
-            .box-child{
-                position:relative;
-                left:40px;
-
-            }
+        
+        }
+        .box-btn{
+            padding:10px ;
+            border-top: 1px solid $accent-color;
+            margin:0 5px;
+        }
+        .box-title{
+            background-color: $accent-color;
+            color:white;
+            font-weight: 600;
+        }
+        .file-upload{
+            display:flex;
+            flex-direction:column;
+            justify-content: space-between;
+            height: 40vh;
+            width:400px;
+            border: 1px solid $light-green;
         }
     }
 }
-//documents-upload
-.file-upload{
-    display: inline-block;
-    margin:20px;
-    width:20vw;;
-    height: 40vh;
-    border: 1px solid $light-green;
-    .child{
-        position:relative;
-        left:30px;
-    }
-}
-//addbutton
-.add{
-    position: relative;
-    right:50px;
-    top:5px
-}
+
+
+
 //profile
 .pro-grid{
     padding:20px 20px 20px;

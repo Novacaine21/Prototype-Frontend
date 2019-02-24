@@ -1,5 +1,5 @@
 import React from "react";
-import { Modal, Button } from "react-bootstrap";
+import { Modal, Button, Grid, Row, Col } from "react-bootstrap";
 import { withRouter } from "react-router-dom";
 import axios from "axios";
 
@@ -125,36 +125,44 @@ class DocumentUploads extends React.Component {
                     </Modal.Footer>
                 </Modal>
                 <div id="document_uploads">
-                    <div id="scan_report" className="file-upload">
-                        <table className="text-center table table-hover child">
-                            <thead>
-                                <tr>
-                                    <th className="text-center align-middle">
-                                        Scan Reports
-                                        <button type="button" onClick={() => this.handleClick("scan_report")} className="add"><i className="fa fa-plus  text-right" /></button>
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {this.state.scanReport}
-                            </tbody>
-                        </table>
-                    </div>
-                    <div id="doctor_prescription" className="file-upload">
-                        <table className="text-center table table-hover child">
-                            <thead>
-                                <tr>
-                                    <th className="text-center align-middle">
-                                        Doctor Prescription
-                                        <button type="button" onClick={() => this.handleClick("doctor_prescription")} className="add"><i className="fa fa-plus" /></button>
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {this.state.doctorPrescription}
-                            </tbody>
-                        </table>
-                    </div>
+                    <Grid className="med-history">
+                        <Row className="box-row">
+                            <Col>
+                                <div id="scan_report" className="file-upload">
+                                    <table className="text-center table table-hover">
+                                        <thead className="box-title">
+                                            <tr>
+                                                <th className="text-center align-middle">Scan Report</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {this.state.scanReport}
+                                        </tbody>
+                                    </table>
+                                    <div className="box-btn">
+                                        <button type="button" onClick={() => this.handleClick("scan_report")} className="btn-2 btn center-block">Upload File</button>
+                                    </div>
+                                </div>
+                            </Col>
+                            <Col>
+                                <div id="doctor_prescription" className="file-upload">
+                                    <table className="text-center table table-hover">
+                                        <thead className="box-title">
+                                            <tr>
+                                                <th className="text-center align-middle">Doctor Prescription</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {this.state.doctorPrescription}
+                                        </tbody>
+                                    </table>
+                                    <div className="box-btn">
+                                        <button type="button" onClick={() => this.handleClick("doctor_prescription")} className="btn-2 center-block btn">Upload File </button>
+                                    </div>
+                                </div>
+                            </Col>
+                        </Row>
+                    </Grid>
                 </div>
             </div>
         );
