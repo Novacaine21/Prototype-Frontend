@@ -81,6 +81,9 @@
             "error",
             "never"
         ],
+
+        "linebreak-style": ["error", "windows"],
+
         "react/prop-types": [
             2,
             { 
