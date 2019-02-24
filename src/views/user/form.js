@@ -92,6 +92,10 @@ class Form extends React.Component {
         }
     }
 
+    // addFile() {
+    //     $("#file").trigger("click");
+    // }
+
     render() {
         return (
             <div>

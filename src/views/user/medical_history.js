@@ -1,11 +1,5 @@
 import React from "react";
-import {
-    Modal,
-    Button,
-    Grid,
-    Col,
-    Row
-} from "react-bootstrap";
+import { Modal, Button, Grid, Col, Row } from "react-bootstrap";
 import { withRouter } from "react-router-dom";
 import axios from "axios";
 
