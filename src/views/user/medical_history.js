@@ -3,8 +3,8 @@ import {
     Modal,
     Button,
     Grid,
-    Row,
-    Col
+    Col,
+    Row
 } from "react-bootstrap";
 import { withRouter } from "react-router-dom";
 import axios from "axios";
@@ -174,94 +174,106 @@ class MedicalHistory extends React.Component {
                         <Row className="box-row">
                             <Col xs={4}>
                                 <div id="allergy" className="box">
-                                    <table className="text-center table table-hover box-child">
-                                        <thead>
+                                    <table className="text-center table table-hover">
+                                        <thead className="box-title">
                                             <tr>
-                                                <th className="text-center align-middle">ALLERGY</th>
-                                                <button type="button" onClick={() => this.handleClick("allergy")} className="add"><i className="fa fa-plus" /></button>
+                                                <th className="text-center">Allergy</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             {this.state.allergy}
                                         </tbody>
                                     </table>
+                                    <div className="box-btn">
+                                        <button type="button" onClick={() => this.handleClick("allergy")} className="btn btn-2 center-block">Add Record</button>
+                                    </div>
                                 </div>
                             </Col>
                             <Col xs={4}>
                                 <div id="medication" className="box">
-                                    <table className="text-center table table-hover box-child">
-                                        <thead>
+                                    <table className="text-center table table-hover">
+                                        <thead className="box-title">
                                             <tr>
-                                                <th className="text-center align-middle">MEDICATION</th>
-                                                <button type="button" onClick={() => this.handleClick("medication")} className="add"><i className="fa fa-plus" /></button>
+                                                <th className="text-center">Medication</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             {this.state.medication}
                                         </tbody>
                                     </table>
+                                    <div className="box-btn">
+                                        <button type="button" onClick={() => this.handleClick("medication")} className="btn btn-2 center-block">Add Record</button>
+                                    </div>
                                 </div>
                             </Col>
                             <Col xs={4}>
                                 <div id="problem" className="box">
-                                    <table className="text-center table table-hover box-child">
-                                        <thead>
+                                    <table className="text-center table table-hover">
+                                        <thead className="box-title">
                                             <tr>
-                                                <th className="text-center align-middle">PROBLEM</th>
-                                                <button type="button" onClick={() => this.handleClick("problem")} className="add"><i className="fa fa-plus" /></button>
+                                                <th className="text-center">Problem</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             {this.state.problem}
                                         </tbody>
                                     </table>
+                                    <div className="box-btn">
+                                        <button type="button" onClick={() => this.handleClick("problem")} className="btn btn-2 center-block">Add Record</button>
+                                    </div>
                                 </div>
                             </Col>
                         </Row>
                         <Row className="box-row">
                             <Col xs={4}>
                                 <div id="immunization" className="box">
-                                    <table className="text-center table table-hover box-child">
-                                        <thead>
+                                    <table className="text-center table table-hover">
+                                        <thead className="box-title">
                                             <tr>
-                                                <th className="text-center align-middle">IMMUNIZATION</th>
-                                                <button type="button" onClick={() => this.handleClick("immunization")} className="add"><i className="fa fa-plus" /></button>
+                                                <th className="text-center">Immunization</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             {this.state.immunization}
                                         </tbody>
                                     </table>
+                                    <div className="box-btn">
+                                        <button type="button" onClick={() => this.handleClick("immunization")} className="btn btn-2 center-block">Add Record</button>
+                                    </div>
                                 </div>
                             </Col>
                             <Col xs={4}>
                                 <div id="vital_sign" className="box">
-                                    <table className="text-center table table-hover box-child">
-                                        <thead>
+                                    <table className="text-center table table-hover">
+                                        <thead className="box-title">
                                             <tr>
-                                                <th className="text-center align-middle">VITAL SIGN</th>
-                                                <button type="button" onClick={() => this.handleClick("vital_sign")} className="add"><i className="fa fa-plus" /></button>
+                                                <th className="text-center">Vital Sign</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             {this.state.vitalSign}
                                         </tbody>
                                     </table>
+                                    <div className="box-btn">
+                                        <button type="button" onClick={() => this.handleClick("vital_sign")} className="btn btn-2 center-block">Add Record</button>
+                                    </div>
                                 </div>
                             </Col>
                             <Col xs={4}>
                                 <div id="procedure" className="box">
-                                    <table className="text-center table table-hover box-child">
-                                        <thead>
+                                    <table className="text-center table table-hover">
+                                        <thead className="box-title">
                                             <tr>
-                                                <th className="text-center align-middle">PROCEDURE</th>
-                                                <button type="button" onClick={() => this.handleClick("procedure")} className="add"><i className="fa fa-plus" /></button>
+                                                <th className="text-center">Procedure</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             {this.state.procedure}
                                         </tbody>
                                     </table>
+                                    <div className="box-btn">
+                                        <button type="button" onClick={() => this.handleClick("procedure")} className="btn-2 center-block btn">Add Record</button>
+                                    </div>
                                 </div>
                             </Col>
                         </Row>

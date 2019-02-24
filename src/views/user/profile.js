@@ -125,7 +125,7 @@ class Profile extends React.Component {
                         <Grid className="pro-grid">
                             <Row className="pro-field">
                                 <Col xs={3}>
-                                    <label htmlFor="age">Age:</label>
+                                    <strong>Age:</strong>
                                 </Col>
                                 <Col xs={9}>
                                     <input id="age" className="inputfield" value={this.state.age} type="number" placeholder="Age" onChange={this.handleChangeAge} required />
@@ -133,15 +133,15 @@ class Profile extends React.Component {
                             </Row>
                             <Row className="pro-field">
                                 <Col xs={3}>
-                                    <label htmlFor="weight">Weight:</label>
+                                    <strong>Weight:</strong>
                                 </Col>
                                 <Col xs={9}>
                                     <input id="weight" className="inputfield" value={this.state.weight} type="number" placeholder="Weight" onChange={this.handleChangeWeight} required />
-                                </Col>    
+                                </Col>
                             </Row>
                             <Row className="pro-field">
                                 <Col xs={3}>
-                                    <label htmlFor="sex">Sex:</label>
+                                    <strong>Sex:</strong>
                                 </Col>
                                 <Col xs={9}>
                                     <input id="sex" className="inputfield" value={this.state.sex} type="text" placeholder="Male/Female" onChange={this.handleChangeSex} required />
@@ -149,7 +149,7 @@ class Profile extends React.Component {
                             </Row>
                             <Row className="pro-field">
                                 <Col xs={3}>
-                                    <label htmlFor="occupation">OCCUPATION:</label>
+                                    <strong>Occupation:</strong>
                                 </Col>
                                 <Col xs={9}>
                                     <input id="occupation" className="inputfield" value={this.state.occupation} type="text" placeholder="Occupation" onChange={this.handleChangeOccupation} />
@@ -157,7 +157,7 @@ class Profile extends React.Component {
                             </Row>
                             <Row className="pro-field">
                                 <Col xs={3}>
-                                    <label htmlFor="address">ADDRESS:</label>
+                                    <strong>Address:</strong>
                                 </Col>
                                 <Col xs={6}>
                                     <input id="address" className="inputfield" value={this.state.address} type="text" placeholder="Address" onChange={this.handleChangeAddress} />
